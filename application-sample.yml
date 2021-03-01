@@ -1,0 +1,7 @@
+logging.level.de.malkusch: DEBUG
+trashday:
+   url: http://example.org
+notification:
+   telegram:
+      token: aToken
+      chatId: 1234
