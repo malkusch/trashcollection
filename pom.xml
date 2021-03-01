@@ -9,7 +9,7 @@
 		<relativePath />
 	</parent>
 	<groupId>de.malkusch.ha</groupId>
-	<artifactId>ha</artifactId>
+	<artifactId>trashday</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<properties>
 		<java.version>11</java.version>
