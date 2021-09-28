@@ -18,13 +18,11 @@ import de.malkusch.ha.shared.infrastructure.http.HttpClient;
 import lombok.extern.slf4j.Slf4j;
 import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.data.ParserException;
-import net.fortuna.ical4j.filter.Filter;
-import net.fortuna.ical4j.filter.PeriodRule;
+import net.fortuna.ical4j.filter.predicate.PeriodRule;
 import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.Component;
 import net.fortuna.ical4j.model.Period;
 import net.fortuna.ical4j.model.Property;
-import net.fortuna.ical4j.model.component.CalendarComponent;
 
 @Service
 @Slf4j
@@ -49,10 +47,8 @@ final class ICallTrashCollectionCalendar implements TrashCollectionCalendar {
         update();
 
         var period = new Period<>(date, date);
-        var filter = new Filter<CalendarComponent>(new PeriodRule<>(period));
-        var events = filter.filter(calendar.getComponents().get(VEVENT));
-
-        return events.stream().flatMap(this::map).collect(toSet());
+        return calendar.getComponents(VEVENT).stream().filter(new PeriodRule<>(period)).flatMap(this::map)
+                .collect(toSet());
     }
 
     private Stream<TrashCan> map(Component event) {
