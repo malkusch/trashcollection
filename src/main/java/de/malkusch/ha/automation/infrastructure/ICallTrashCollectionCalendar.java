@@ -52,7 +52,7 @@ final class ICallTrashCollectionCalendar implements TrashCollectionCalendar {
     }
 
     private Stream<TrashCan> map(Component event) {
-        return event.getProperties().getFirst(SUMMARY).map(Property::getValue).flatMap(mapper::toTrashCan).stream();
+        return event.getProperty(SUMMARY).map(Property::getValue).flatMap(mapper::toTrashCan).stream();
     }
 
     private void update() {
