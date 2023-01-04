@@ -1,2 +1,3 @@
-application.yml
+application-dev.yml
+application.properties
 SandboxIT.java
