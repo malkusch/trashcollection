@@ -9,7 +9,9 @@ import com.pengrad.telegrambot.TelegramBot;
 
 import de.malkusch.ha.notification.model.NotificationService;
 import lombok.Data;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Configuration
 class TelegramConfiguration {
 
@@ -23,6 +25,10 @@ class TelegramConfiguration {
 
     @Bean
     NotificationService notificationService(TelegramProperties properties) {
+        if (properties.chatId == null || properties.token == null) {
+            log.warn("Telegram chatId or token are empty, falling back to logging notifications");
+            return new LoggingNotificationService();
+        }
         var api = new TelegramBot(properties.token);
         return new TelegramNotificationService(api, properties.chatId);
     }
