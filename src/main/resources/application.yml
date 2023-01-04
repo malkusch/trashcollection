@@ -5,3 +5,5 @@ http:
    retry:
       delay: PT5S
       retries: 5
+calendar:
+   file: /tmp/trash-calendar

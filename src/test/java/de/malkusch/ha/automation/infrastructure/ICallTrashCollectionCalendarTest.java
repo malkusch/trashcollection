@@ -6,12 +6,20 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDate;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import de.malkusch.ha.automation.infrastructure.ical.CalendarFile;
+import de.malkusch.ha.automation.infrastructure.ical.CalendarHttp;
+import de.malkusch.ha.automation.infrastructure.ical.CalendarIO;
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.automation.model.TrashCollectionCalendar;
@@ -23,12 +31,20 @@ public class ICallTrashCollectionCalendarTest {
     private final HttpClient http = mock(HttpClient.class);
     private TrashCollectionCalendar calendar;
 
+    private final static Path CALENDAR_FILE = Paths.get("/tmp/trash-calendar-test");
+
     @BeforeEach
     public void setupCalendar() throws Exception {
         var url = "ANY";
         when(http.get(url))
                 .then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("schedule.ics")));
-        calendar = new ICallTrashCollectionCalendar(http, url, new DefaultMapper());
+        var calendarIO = new CalendarIO(new CalendarHttp(http, url), new CalendarFile(CALENDAR_FILE));
+        calendar = new ICallTrashCollectionCalendar(new DefaultMapper(), calendarIO);
+    }
+
+    @AfterEach
+    public void deleteCalenderFile() throws IOException {
+        Files.delete(CALENDAR_FILE);
     }
 
     @ParameterizedTest
@@ -44,7 +60,7 @@ public class ICallTrashCollectionCalendarTest {
 
             "2017-06-09, 2017-06-22, RESIDUAL|ORGANIC", //
             "2017-06-21, 2017-06-22, RESIDUAL|ORGANIC", //
-            
+
             "2017-06-22, 2017-07-05, PAPER|PLASTIC", //
             "2017-07-04, 2017-07-05, PAPER|PLASTIC", //
 

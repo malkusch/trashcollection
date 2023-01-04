@@ -3,55 +3,37 @@ package de.malkusch.ha.automation.infrastructure;
 import static net.fortuna.ical4j.model.Component.VEVENT;
 import static net.fortuna.ical4j.model.Property.SUMMARY;
 
-import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import de.malkusch.ha.automation.infrastructure.ical.CalendarIO;
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.automation.model.TrashCollectionCalendar;
-import de.malkusch.ha.shared.infrastructure.http.HttpClient;
-import lombok.extern.slf4j.Slf4j;
-import net.fortuna.ical4j.data.CalendarBuilder;
-import net.fortuna.ical4j.data.ParserException;
+import lombok.RequiredArgsConstructor;
 import net.fortuna.ical4j.filter.predicate.PeriodRule;
-import net.fortuna.ical4j.model.Calendar;
 import net.fortuna.ical4j.model.Period;
 import net.fortuna.ical4j.model.Property;
 import net.fortuna.ical4j.model.component.VEvent;
 import net.fortuna.ical4j.model.property.DtStart;
 
 @Service
-@Slf4j
+@RequiredArgsConstructor
 final class ICallTrashCollectionCalendar implements TrashCollectionCalendar {
 
-    private final HttpClient http;
-    private final String url;
     private final TrashCanMapper mapper;
-    private volatile Calendar calendar;
-
-    ICallTrashCollectionCalendar(HttpClient http, @Value("${trashday.url}") String url, TrashCanMapper mapper)
-            throws IOException, InterruptedException, ParserException {
-
-        this.http = http;
-        this.url = url;
-        this.mapper = mapper;
-        this.calendar = download();
-    }
+    private final CalendarIO io;
 
     @Override
     public TrashCollection findNextTrashCollectionAfter(LocalDate after) {
-        update();
-
         var limit = after.plusMonths(3);
         var period = new Period<>(after, limit);
 
-        List<VEvent> events = calendar.getComponents(VEVENT);
+        List<VEvent> events = io.fetch().getComponents(VEVENT);
         var dateCans = events.stream() //
                 .filter(new PeriodRule<>(period)) //
                 .flatMap(this::toDateCan) //
@@ -85,20 +67,5 @@ final class ICallTrashCollectionCalendar implements TrashCollectionCalendar {
         }
         var dateCan = new DateCan((LocalDate) date, can.get());
         return Stream.of(dateCan);
-    }
-
-    private void update() {
-        try {
-            calendar = download();
-        } catch (IOException | InterruptedException | ParserException e) {
-            log.warn("Failed to update calendar {}", url, e);
-        }
-    }
-
-    private Calendar download() throws IOException, InterruptedException, ParserException {
-        log.debug("Downloading {}", url);
-        try (var response = http.get(url)) {
-            return new CalendarBuilder().build(response.body);
-        }
     }
 }
