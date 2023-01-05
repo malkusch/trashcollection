@@ -6,6 +6,7 @@ import static java.util.Objects.requireNonNull;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.stream.Stream;
 
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,6 +20,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Service
 public final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, AutoCloseable {
+
+    private static final Comparator<? super TrashCollection> SORT_BY_DATE = (a, b) -> a.date().compareTo(b.date());
 
     private volatile TrashCollections collections;
     private final InMemoryCalendarProvider provider;
@@ -35,6 +38,12 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
 
         public Stream<TrashCollection> stream() {
             return collections.stream();
+        }
+
+        public String toString() {
+            var min = stream().min(SORT_BY_DATE).map(it -> it.date()).get();
+            var max = stream().max(SORT_BY_DATE).map(it -> it.date()).get();
+            return String.format("[%s - %s, n=%d]", min, max, collections.size());
         }
     }
 
@@ -55,13 +64,15 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
             log.warn("Failed fetching Calendar, falling back to cached file", e);
             collections = cache.load();
         }
+
+        log.info("Loaded calendar: {}", collections);
     }
 
     @Override
     public TrashCollection findNextTrashCollectionAfter(LocalDate after) {
         return collections.stream() //
                 .filter(it -> it.date().isAfter(after)) //
-                .min((a, b) -> a.date().compareTo(b.date())) //
+                .min(SORT_BY_DATE) //
                 .orElseThrow(() -> new IllegalStateException("Can't find next trash collection after " + after));
     }
 
@@ -70,6 +81,7 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
         try {
             log.info("Updating calendar");
             collections = provider.fetch();
+            log.info("Updated calendar: {}", collections);
             cache.store(collections);
 
         } catch (Exception e) {

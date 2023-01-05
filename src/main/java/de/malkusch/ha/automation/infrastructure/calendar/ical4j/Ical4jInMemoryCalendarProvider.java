@@ -31,7 +31,7 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
     public TrashCollections fetch() throws IOException, InterruptedException {
         List<VEvent> events = http.download().getComponents(VEVENT);
 
-        var limit = LocalDate.now().plusYears(1);
+        var limit = LocalDate.now().plusMonths(15);
         var dateCans = events.stream() //
                 .flatMap(this::toDateCan) //
                 .filter(it -> it.date().isBefore(limit)) //
