@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Duration;
 import java.time.LocalDate;
 
 import org.junit.jupiter.api.AfterEach;
@@ -38,7 +39,9 @@ public class ICallTrashCollectionCalendarTest {
         var url = "ANY";
         when(http.get(url))
                 .then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("schedule.ics")));
-        var calendarIO = new CalendarIO(new CalendarHttp(http, url), new CalendarFile(CALENDAR_FILE));
+        var calendarIO = new CalendarIO(new CalendarHttp(http, url), new CalendarFile(CALENDAR_FILE),
+                Duration.ofMinutes(1));
+
         calendar = new ICallTrashCollectionCalendar(new DefaultMapper(), calendarIO);
     }
 

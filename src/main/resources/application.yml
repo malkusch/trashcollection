@@ -7,3 +7,4 @@ http:
       retries: 5
 calendar:
    file: /tmp/trash-calendar
+   cache-expiration: PT5M

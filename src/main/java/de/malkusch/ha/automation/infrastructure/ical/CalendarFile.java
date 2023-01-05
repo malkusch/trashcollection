@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.Instant;
 
 import org.springframework.beans.factory.annotation.Value;
 
@@ -38,6 +39,10 @@ public final class CalendarFile {
             log.debug("Calender loaded from file {}", path);
             return calendar;
         }
+    }
+
+    public Instant lastUpdate() throws IOException {
+        return Files.getLastModifiedTime(path).toInstant();
     }
 
     public void store(Calendar calendar) throws ValidationException, IOException {
