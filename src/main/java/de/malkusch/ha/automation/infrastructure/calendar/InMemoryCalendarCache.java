@@ -6,11 +6,10 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collection;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.malkusch.ha.automation.model.TrashCollection;
+import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollectionCalendar.TrashCollections;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -32,24 +31,20 @@ public final class InMemoryCalendarCache {
         this.mapper = mapper;
     }
 
-    private static record TrashCollections(Collection<TrashCollection> collections) {
-
-    }
-
-    public Collection<TrashCollection> load() throws IOException {
+    public TrashCollections load() throws IOException {
         try (var stream = new FileInputStream(path.toFile())) {
-            var collections = mapper.readValue(stream, TrashCollections.class).collections;
+            var collections = mapper.readValue(stream, TrashCollections.class);
             log.debug("Calender loaded from file {}", path);
             return collections;
         }
     }
 
-    public void store(Collection<TrashCollection> collections) throws IOException {
+    public void store(TrashCollections collections) throws IOException {
         if (!Files.exists(path)) {
             Files.createFile(path);
         }
         try (var stream = new FileOutputStream(path.toFile())) {
-            mapper.writeValue(stream, new TrashCollections(collections));
+            mapper.writeValue(stream, collections);
         }
         log.debug("Calender stored in file {}", path);
     }

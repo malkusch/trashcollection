@@ -5,7 +5,6 @@ import static net.fortuna.ical4j.model.Property.SUMMARY;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -13,6 +12,7 @@ import java.util.stream.Stream;
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollectionCalendar.InMemoryCalendarProvider;
+import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollectionCalendar.TrashCollections;
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
 import lombok.RequiredArgsConstructor;
@@ -28,7 +28,7 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
     private final Ical4jHttpFactory http;
 
     @Override
-    public Collection<TrashCollection> fetch() throws IOException, InterruptedException {
+    public TrashCollections fetch() throws IOException, InterruptedException {
         List<VEvent> events = http.download().getComponents(VEVENT);
 
         var limit = LocalDate.now().plusYears(1);
@@ -41,7 +41,7 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
                 .map(it -> toTrashCollection(it.getKey(), it.getValue())) //
                 .toList();
 
-        return collections;
+        return new TrashCollections(collections);
     }
 
     private static record DateCan(LocalDate date, TrashCan can) {

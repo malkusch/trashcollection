@@ -1,8 +1,11 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.Collection;
+import java.util.stream.Stream;
 
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
@@ -15,13 +18,27 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, AutoCloseable {
 
-    private volatile Collection<TrashCollection> collections;
+    private volatile TrashCollections collections;
     private final InMemoryCalendarProvider provider;
     private final InMemoryCalendarCache cache;
 
+    public static record TrashCollections(Collection<TrashCollection> collections) {
+
+        public TrashCollections {
+            requireNonNull(collections);
+            if (collections.isEmpty()) {
+                throw new IllegalArgumentException("Trash collection is empty");
+            }
+        }
+
+        public Stream<TrashCollection> stream() {
+            return collections.stream();
+        }
+    }
+
     public static interface InMemoryCalendarProvider {
 
-        Collection<TrashCollection> fetch() throws IOException, InterruptedException;
+        TrashCollections fetch() throws IOException, InterruptedException;
 
     }
 
@@ -30,11 +47,11 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
         this.cache = cache;
 
         try {
-            this.collections = provider.fetch();
+            collections = provider.fetch();
 
         } catch (Exception e) {
             log.warn("Failed fetching Calendar, falling back to cached file", e);
-            this.collections = cache.load();
+            collections = cache.load();
         }
     }
 
@@ -49,7 +66,7 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
     @Scheduled(cron = "${calendar.update}")
     void update() throws IOException, InterruptedException {
         log.info("Updating calendar");
-        this.collections = provider.fetch();
+        collections = provider.fetch();
         cache.store(collections);
     }
 
