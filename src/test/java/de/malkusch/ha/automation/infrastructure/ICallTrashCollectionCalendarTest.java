@@ -35,6 +35,8 @@ public class ICallTrashCollectionCalendarTest {
 
     @BeforeEach
     public void setupCalendar() throws Exception {
+        Files.deleteIfExists(CALENDAR_FILE);
+
         var url = "ANY";
         when(http.get(url))
                 .then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("schedule.ics")));
@@ -45,11 +47,18 @@ public class ICallTrashCollectionCalendarTest {
 
     @AfterEach
     public void deleteCalenderFile() throws IOException {
-        Files.delete(CALENDAR_FILE);
+        Files.deleteIfExists(CALENDAR_FILE);
     }
 
     @ParameterizedTest
     @CsvSource({ //
+            "2016-12-31, 2017-01-05, RESIDUAL|ORGANIC", //
+            "2017-01-01, 2017-01-05, RESIDUAL|ORGANIC", //
+            "2017-01-04, 2017-01-05, RESIDUAL|ORGANIC", //
+
+            "2017-01-05, 2017-01-11, PAPER|PLASTIC", //
+            "2017-01-10, 2017-01-11, PAPER|PLASTIC", //
+
             "2017-05-24, 2017-05-26, RESIDUAL|ORGANIC", //
             "2017-05-25, 2017-05-26, RESIDUAL|ORGANIC", //
 
@@ -69,6 +78,8 @@ public class ICallTrashCollectionCalendarTest {
 
             "2017-07-06, 2017-07-20, RESIDUAL|ORGANIC", //
             "2017-07-19, 2017-07-20, RESIDUAL|ORGANIC", //
+
+            "2017-12-27, 2017-12-28, PAPER|PLASTIC", //
     })
     public void shouldFindTrashCollection(String afterString, String dateString, String expectedCans) {
         var after = LocalDate.parse(afterString);
