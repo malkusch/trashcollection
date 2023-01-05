@@ -1,7 +1,6 @@
 package de.malkusch.ha.automation.infrastructure.ical;
 
 import java.io.IOException;
-import java.time.Duration;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -18,9 +17,9 @@ public class CalendarConfiguration {
     }
 
     @Bean
-    CalendarIO calendarIO(@Value("${calendar.cache-expiration}") Duration cacheExpiration, CalendarHttp http,
-            CalendarFile file) throws IOException, InterruptedException, ParserException {
+    CalendarIO calendarIO(CalendarHttp http, CalendarFile file)
+            throws IOException, InterruptedException, ParserException {
 
-        return new CalendarIO(http, file, cacheExpiration);
+        return new CalendarIO(http, file);
     }
 }
