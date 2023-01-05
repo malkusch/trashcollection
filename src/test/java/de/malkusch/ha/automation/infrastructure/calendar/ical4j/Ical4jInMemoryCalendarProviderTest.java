@@ -4,8 +4,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-import java.io.IOException;
-import java.net.URISyntaxException;
 import java.nio.file.Paths;
 
 import org.junit.jupiter.params.ParameterizedTest;
@@ -18,8 +16,7 @@ import de.malkusch.ha.shared.infrastructure.http.HttpResponse;
 
 public class Ical4jInMemoryCalendarProviderTest {
 
-    public Ical4jInMemoryCalendarProvider provider(String file)
-            throws IOException, InterruptedException, URISyntaxException {
+    public Ical4jInMemoryCalendarProvider provider(String file) throws Exception {
         var http = mock(HttpClient.class);
         var url = "ANY";
         when(http.get(url)).then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream(file)));
@@ -37,7 +34,7 @@ public class Ical4jInMemoryCalendarProviderTest {
         assertEquals(expected, parsed);
     }
 
-    private TrashCollections fromJson(String file) throws IOException, URISyntaxException {
+    private TrashCollections fromJson(String file) throws Exception {
         return new InMemoryCalendarCache(Paths.get(getClass().getResource(file).toURI())).load();
     }
 }

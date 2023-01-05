@@ -5,6 +5,8 @@ import static net.fortuna.ical4j.model.Property.SUMMARY;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -16,12 +18,14 @@ import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollection
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.fortuna.ical4j.model.Property;
 import net.fortuna.ical4j.model.component.VEvent;
 import net.fortuna.ical4j.model.property.DtStart;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarProvider {
 
     private final TrashCanMapper mapper;
@@ -54,12 +58,25 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
 
     private Stream<DateCan> toDateCan(VEvent event) {
         var date = event.getStartDate().map(DtStart::getDate).orElse(null);
+
+        if (date instanceof LocalDateTime) {
+            date = ((LocalDateTime) date).toLocalDate();
+        }
+        if (date instanceof ZonedDateTime) {
+            date = ((ZonedDateTime) date).toLocalDate();
+        }
         if (!(date instanceof LocalDate)) {
             return Stream.empty();
         }
 
-        var can = event.getProperty(SUMMARY).map(Property::getValue).flatMap(mapper::toTrashCan);
+        var summary = event.getProperty(SUMMARY).map(Property::getValue).orElse(null);
+        if (summary == null) {
+            return Stream.empty();
+        }
+
+        var can = mapper.toTrashCan(summary);
         if (can.isEmpty()) {
+            log.warn("Couldn't map '{}' to a trash can", summary);
             return Stream.empty();
         }
         var dateCan = new DateCan((LocalDate) date, can.get());

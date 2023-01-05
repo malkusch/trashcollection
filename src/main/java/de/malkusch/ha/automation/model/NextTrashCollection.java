@@ -25,6 +25,7 @@ public class NextTrashCollection {
     }
 
     public void checkNextChanged() {
+        log.debug("Checking if next changed");
         var changedNext = calendar.findNextTrashCollectionAfter(LocalDate.now());
         if (changedNext.equals(this.next)) {
             return;

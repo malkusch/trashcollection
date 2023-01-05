@@ -1,11 +1,11 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
+import static java.nio.file.Files.deleteIfExists;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -29,7 +29,7 @@ public class InMemoryCalendarCacheTest {
     @BeforeEach
     @AfterEach
     public void deleteFile() throws IOException, InterruptedException {
-        Files.deleteIfExists(FILE);
+        deleteIfExists(FILE);
     }
 
     @BeforeEach

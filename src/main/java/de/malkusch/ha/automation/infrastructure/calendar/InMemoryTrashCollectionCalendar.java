@@ -76,6 +76,11 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
                 .orElseThrow(() -> new IllegalStateException("Can't find next trash collection after " + after));
     }
 
+    @Override
+    public Stream<TrashCollection> findAll() {
+        return collections.stream();
+    }
+
     @Scheduled(cron = "${calendar.update}")
     void update() throws IOException, InterruptedException {
         try {

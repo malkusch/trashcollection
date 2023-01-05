@@ -16,17 +16,18 @@ public final class DefaultMapper implements TrashCanMapper {
 
     @Override
     public Optional<TrashCan> toTrashCan(String summary) {
+        var summary_lower = summary.toLowerCase();
 
-        if (summary.contains("Altpapier")) {
+        if (summary_lower.contains("papier")) {
             return Optional.of(PAPER);
 
-        } else if (summary.contains("Gelber Sack")) {
+        } else if (summary_lower.contains("gelber sack")) {
             return Optional.of(PLASTIC);
 
-        } else if (summary.contains("Biomüll")) {
+        } else if (summary_lower.contains("biomüll")) {
             return Optional.of(ORGANIC);
 
-        } else if (summary.contains("Restmüll")) {
+        } else if (summary_lower.contains("restmüll")) {
             return Optional.of(RESIDUAL);
         } else {
             return Optional.empty();
