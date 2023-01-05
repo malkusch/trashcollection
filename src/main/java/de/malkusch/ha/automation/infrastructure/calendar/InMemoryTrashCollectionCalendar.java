@@ -1,5 +1,6 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
+import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
 import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.automation.model.TrashCollectionCalendar;
+import de.malkusch.ha.shared.infrastructure.event.ErrorLogged;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -65,9 +67,16 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
 
     @Scheduled(cron = "${calendar.update}")
     void update() throws IOException, InterruptedException {
-        log.info("Updating calendar");
-        collections = provider.fetch();
-        cache.store(collections);
+        try {
+            log.info("Updating calendar");
+            collections = provider.fetch();
+            cache.store(collections);
+
+        } catch (Exception e) {
+            var event = new ErrorLogged("Failed updating calendar");
+            log.error("Failed updating calendar [{}]", event.reference(), e);
+            publish(event);
+        }
     }
 
     @Override
