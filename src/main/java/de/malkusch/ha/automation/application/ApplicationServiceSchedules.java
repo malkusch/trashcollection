@@ -23,11 +23,11 @@ public class ApplicationServiceSchedules {
 
     @Service
     @RequiredArgsConstructor
-    public final class CheckTrashDaySchedule {
+    public static final class CheckTrashDaySchedule {
 
         private final CheckTrashDayService checker;
 
-        @Scheduled(cron = "59 59 5 * * *")
+        @Scheduled(cron = "59 59 */5 * * *")
         public void checkTrashDay() {
             checker.checkTomorrow();
         }

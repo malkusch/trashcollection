@@ -16,14 +16,18 @@ public final class CheckTrashDayService {
 
     private final NextTrashCollection next;
 
+    private volatile TrashCollection lastNotification;
+
     public void checkTomorrow() {
         log.debug("Checking trash day");
         var today = now();
         var tomorrow = today.plusDays(1);
         var next = this.next.nextTrashCollection();
-        if (next.getDate().isEqual(tomorrow)) {
+        if (next.getDate().isEqual(tomorrow) && !next.equals(lastNotification)) {
             log.info("Noticed tomorrow's trash day for {}", next);
             publish(new TomorrowsTrashDayNoticed(next));
+
+            lastNotification = next;
         }
     }
 
