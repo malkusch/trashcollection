@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
+import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -57,15 +58,8 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
     }
 
     private Stream<DateCan> toDateCan(VEvent event) {
-        var date = event.getStartDate().map(DtStart::getDate).orElse(null);
-
-        if (date instanceof LocalDateTime) {
-            date = ((LocalDateTime) date).toLocalDate();
-        }
-        if (date instanceof ZonedDateTime) {
-            date = ((ZonedDateTime) date).toLocalDate();
-        }
-        if (!(date instanceof LocalDate)) {
+        var date = collectionDate(event);
+        if (date == null) {
             return Stream.empty();
         }
 
@@ -79,7 +73,37 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
             log.warn("Couldn't map '{}' to a trash can", summary);
             return Stream.empty();
         }
-        var dateCan = new DateCan((LocalDate) date, can.get());
+        var dateCan = new DateCan(date, can.get());
         return Stream.of(dateCan);
+    }
+
+    private static LocalDate collectionDate(VEvent event) {
+        var date = event.getStartDate().map(DtStart::getDate).orElse(null);
+        if (date == null) {
+            log.warn("{} has no collection date", event);
+            return null;
+        }
+
+        try {
+            if (date instanceof LocalDate) {
+                return (LocalDate) date;
+            }
+            if (date instanceof LocalDateTime) {
+                return ((LocalDateTime) date).toLocalDate();
+            }
+            if (date instanceof ZonedDateTime) {
+                return ((ZonedDateTime) date).toLocalDate();
+            }
+            if (date instanceof TemporalAccessor) {
+                return LocalDate.from(date);
+            }
+
+            log.warn("{} has collection date {} which couldn't be converted to LocalDate", event, date);
+            return null;
+
+        } catch (Exception e) {
+            log.warn("{} has collection date {} which couldn't be converted to LocalDate", event, date, e);
+            return null;
+        }
     }
 }
