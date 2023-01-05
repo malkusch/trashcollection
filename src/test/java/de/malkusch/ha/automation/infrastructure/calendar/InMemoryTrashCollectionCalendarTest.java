@@ -1,4 +1,4 @@
-package de.malkusch.ha.automation.infrastructure;
+package de.malkusch.ha.automation.infrastructure.calendar;
 
 import static java.nio.file.Files.deleteIfExists;
 import static java.util.Arrays.stream;
@@ -21,18 +21,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import de.malkusch.ha.automation.infrastructure.ical.CalendarFile;
-import de.malkusch.ha.automation.infrastructure.ical.CalendarHttp;
-import de.malkusch.ha.automation.infrastructure.ical.CalendarIO;
+import de.malkusch.ha.automation.infrastructure.calendar.ical4j.DefaultMapper;
+import de.malkusch.ha.automation.infrastructure.calendar.ical4j.Ical4jHttpFactory;
+import de.malkusch.ha.automation.infrastructure.calendar.ical4j.Ical4jInMemoryCalendarProvider;
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.automation.model.TrashCollectionCalendar;
 import de.malkusch.ha.shared.infrastructure.http.HttpClient;
 import de.malkusch.ha.shared.infrastructure.http.HttpResponse;
 
-public class ICallTrashCollectionCalendarTest {
-
-    private final HttpClient http = mock(HttpClient.class);
+public class InMemoryTrashCollectionCalendarTest {
 
     private final static Path CALENDAR_FILE = Paths.get("/tmp/trash-calendar-test");
 
@@ -44,11 +42,14 @@ public class ICallTrashCollectionCalendarTest {
 
     private TrashCollectionCalendar calendar() {
         try {
+            var http = mock(HttpClient.class);
             var url = "ANY";
             when(http.get(url))
                     .then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("schedule.ics")));
-            var calendarIO = new CalendarIO(new CalendarHttp(http, url), new CalendarFile(CALENDAR_FILE));
-            return new ICallTrashCollectionCalendar(new DefaultMapper(), calendarIO);
+            var provider = new Ical4jInMemoryCalendarProvider(new DefaultMapper(), new Ical4jHttpFactory(http, url));
+            var cache = new InMemoryCalendarCache(CALENDAR_FILE);
+            return new InMemoryTrashCollectionCalendar(provider, cache);
+
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }

@@ -17,7 +17,7 @@ public final class NextTrashCollectionChangedNotificationApplicationService {
     @EventListener
     public void onTrashDay(NextTrashCollectionChanged event) {
         var message = String.format("Die nächste Müllabfuhr kommt am %s: %s", event.nextCollection.date(),
-                event.nextCollection.getTrashCans());
+                event.nextCollection.trashCans());
         var notification = new Notification(message);
         notificationService.send(notification);
     }

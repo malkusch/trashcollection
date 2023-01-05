@@ -1,4 +1,4 @@
-package de.malkusch.ha.automation.infrastructure.ical;
+package de.malkusch.ha.automation.infrastructure.calendar.ical4j;
 
 import java.io.IOException;
 
@@ -13,20 +13,22 @@ import net.fortuna.ical4j.model.Calendar;
 
 @Service
 @Slf4j
-public final class CalendarHttp {
+public final class Ical4jHttpFactory {
 
     private final HttpClient http;
     private final String url;
 
-    public CalendarHttp(HttpClient http, @Value("${trashday.url}") String url) {
+    public Ical4jHttpFactory(HttpClient http, @Value("${trashday.url}") String url) {
         this.http = http;
         this.url = url;
     }
 
-    public Calendar download() throws IOException, InterruptedException, ParserException {
+    public Calendar download() throws IOException, InterruptedException {
         log.debug("Downloading {}", url);
         try (var response = http.get(url)) {
             return new CalendarBuilder().build(response.body);
+        } catch (ParserException e) {
+            throw new IOException("Can't parse response of " + url, e);
         }
     }
 }

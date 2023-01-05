@@ -23,7 +23,7 @@ public final class CheckTrashDayService {
         var today = now();
         var tomorrow = today.plusDays(1);
         var next = this.next.nextTrashCollection();
-        if (next.getDate().isEqual(tomorrow) && !next.equals(lastNotification)) {
+        if (next.date().isEqual(tomorrow) && !next.equals(lastNotification)) {
             log.info("Noticed tomorrow's trash day for {}", next);
             publish(new TomorrowsTrashDayNoticed(next));
 

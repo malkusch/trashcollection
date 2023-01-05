@@ -1,4 +1,4 @@
-package de.malkusch.ha.automation.infrastructure;
+package de.malkusch.ha.automation.infrastructure.calendar.ical4j;
 
 import static de.malkusch.ha.automation.model.TrashCan.ORGANIC;
 import static de.malkusch.ha.automation.model.TrashCan.PAPER;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import de.malkusch.ha.automation.model.TrashCan;
 
 @Service
-final class DefaultMapper implements TrashCanMapper {
+public final class DefaultMapper implements TrashCanMapper {
 
     @Override
     public Optional<TrashCan> toTrashCan(String summary) {
