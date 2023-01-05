@@ -6,11 +6,11 @@ import de.malkusch.ha.notification.model.Notification;
 import de.malkusch.ha.notification.model.NotificationService;
 
 @Service
-public final class ApllicationLifeCycleNotificationApplicationService implements AutoCloseable {
+public final class ApplicationLifeCycleNotificationApplicationService implements AutoCloseable {
 
     private final NotificationService notifier;
 
-    public ApllicationLifeCycleNotificationApplicationService(NotificationService notifier) {
+    public ApplicationLifeCycleNotificationApplicationService(NotificationService notifier) {
         this.notifier = notifier;
         notifier.send(new Notification("Trash application started"));
     }
