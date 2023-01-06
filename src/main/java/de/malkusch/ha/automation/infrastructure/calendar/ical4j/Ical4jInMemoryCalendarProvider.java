@@ -53,6 +53,10 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
     }
 
     private static TrashCollection toTrashCollection(LocalDate date, List<DateCan> dateCans) {
+        if (!dateCans.stream().allMatch(it -> it.date.equals(date))) {
+            throw new IllegalStateException(
+                    String.format("All dates %s must match the collection date %s", dateCans, date));
+        }
         var cans = dateCans.stream().map(DateCan::can).toList();
         return new TrashCollection(date, cans);
     }
