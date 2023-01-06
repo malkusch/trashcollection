@@ -5,8 +5,6 @@ import static de.malkusch.ha.automation.model.TrashCan.PAPER;
 import static de.malkusch.ha.automation.model.TrashCan.PLASTIC;
 import static de.malkusch.ha.automation.model.TrashCan.RESIDUAL;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.model.TrashCan;
@@ -15,22 +13,23 @@ import de.malkusch.ha.automation.model.TrashCan;
 public final class DefaultMapper implements TrashCanMapper {
 
     @Override
-    public Optional<TrashCan> toTrashCan(String summary) {
+    public TrashCan toTrashCan(String summary) {
         var summary_lower = summary.toLowerCase();
 
         if (summary_lower.contains("papier")) {
-            return Optional.of(PAPER);
+            return PAPER;
 
         } else if (summary_lower.contains("gelber sack")) {
-            return Optional.of(PLASTIC);
+            return PLASTIC;
 
         } else if (summary_lower.contains("biomüll")) {
-            return Optional.of(ORGANIC);
+            return ORGANIC;
 
         } else if (summary_lower.contains("restmüll")) {
-            return Optional.of(RESIDUAL);
+            return RESIDUAL;
+
         } else {
-            return Optional.empty();
+            throw new IllegalArgumentException("Couldn't map " + summary);
         }
     }
 }
