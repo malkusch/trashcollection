@@ -1,5 +1,6 @@
 package de.malkusch.ha.automation.model;
 
+import static java.util.Arrays.asList;
 import static java.util.Objects.requireNonNull;
 
 import java.time.LocalDate;
@@ -11,6 +12,10 @@ public record TrashCollection(LocalDate date, Set<TrashCan> trashCans) {
 
     public TrashCollection(LocalDate date, Collection<TrashCan> trashCans) {
         this(date, new HashSet<>(trashCans));
+    }
+
+    public TrashCollection(LocalDate date, TrashCan... trashCans) {
+        this(date, asList(trashCans));
     }
 
     public TrashCollection {
