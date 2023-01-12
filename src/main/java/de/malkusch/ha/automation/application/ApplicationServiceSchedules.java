@@ -20,7 +20,7 @@ public class ApplicationServiceSchedules {
 
         private final NextTrashCollection next;
 
-        @Scheduled(cron = "59 49 5 * * *")
+        @Scheduled(cron = "59 49 5/6 * * *")
         public void checkNextChanged() {
             try {
                 next.checkNextChanged();
@@ -40,7 +40,7 @@ public class ApplicationServiceSchedules {
 
         private final CheckTrashDayService checker;
 
-        @Scheduled(cron = "59 59 */5 * * *")
+        @Scheduled(cron = "59 59 5/6 * * *")
         public void checkTrashDay() {
             try {
                 checker.checkTomorrow();
