@@ -28,7 +28,7 @@ public class TrashCollectionNotificationApplicationServiceTest {
         service.onChanged(new NextTrashCollectionChanged(trashCollection("2023-01-12", RESIDUAL)));
 
         verify(notificationService)
-                .send(eq(new Notification("Die nächste Müllabfuhr kommt am Do. 12.1.23:\n[RESIDUAL]")));
+                .send(eq(new Notification("Die nächste Müllabfuhr kommt am Do. 12.1.23: [RESIDUAL]")));
     }
 
     @Test
@@ -36,7 +36,7 @@ public class TrashCollectionNotificationApplicationServiceTest {
         service.onTrashDay(new TomorrowsTrashDayNoticed(trashCollection("2023-01-12", RESIDUAL)));
 
         verify(notificationService)
-                .send(eq(new Notification("Morgen (Do. 12.1.23) kommt die Müllabfuhr:\n[RESIDUAL]")));
+                .send(eq(new Notification("Morgen (Do. 12.1.23) kommt die Müllabfuhr: [RESIDUAL]")));
     }
 
     private static TrashCollection trashCollection(String date, TrashCan... trashCans) {

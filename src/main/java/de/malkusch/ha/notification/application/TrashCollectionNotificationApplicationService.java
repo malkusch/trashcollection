@@ -22,7 +22,7 @@ public final class TrashCollectionNotificationApplicationService {
 
     @EventListener
     public void onChanged(NextTrashCollectionChanged event) {
-        var message = String.format("Die nächste Müllabfuhr kommt am %s:\n%s", //
+        var message = String.format("Die nächste Müllabfuhr kommt am %s: %s", //
                 date(event.nextCollection), //
                 event.nextCollection.trashCans());
         var notification = new Notification(message);
@@ -31,7 +31,7 @@ public final class TrashCollectionNotificationApplicationService {
 
     @EventListener
     public void onTrashDay(TomorrowsTrashDayNoticed event) {
-        var message = String.format("Morgen (%s) kommt die Müllabfuhr:\n%s", //
+        var message = String.format("Morgen (%s) kommt die Müllabfuhr: %s", //
                 date(event.nextCollection), //
                 event.nextCollection.trashCans());
         var notification = new Notification(message);
