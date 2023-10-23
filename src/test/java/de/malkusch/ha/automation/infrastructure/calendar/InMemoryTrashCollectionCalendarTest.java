@@ -18,42 +18,27 @@ import java.util.stream.Stream;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import de.malkusch.ha.automation.infrastructure.calendar.ical4j.DefaultMapper;
 import de.malkusch.ha.automation.infrastructure.calendar.ical4j.Ical4jHttpFactory;
 import de.malkusch.ha.automation.infrastructure.calendar.ical4j.Ical4jInMemoryCalendarProvider;
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
-import de.malkusch.ha.automation.model.TrashCollectionCalendar;
 import de.malkusch.ha.shared.infrastructure.http.HttpClient;
 import de.malkusch.ha.shared.infrastructure.http.HttpResponse;
 
 public class InMemoryTrashCollectionCalendarTest {
 
-    private final static Path CALENDAR_FILE = Paths.get("/tmp/trash-calendar-test");
+    private static final String URL = "ANY";
+    private static final Path CALENDAR_FILE = Paths.get("/tmp/trash-calendar-test");
+    private static final String CALENDAR_2017 = "2017.ics";
+    private static final String CALENDAR_2023 = "2023.ics";
 
-    @AfterEach
-    @BeforeEach
-    public void deleteCalenderFile() throws IOException {
-        deleteIfExists(CALENDAR_FILE);
-    }
-
-    private TrashCollectionCalendar calendar() {
-        try {
-            var http = mock(HttpClient.class);
-            var url = "ANY";
-            when(http.get(url))
-                    .then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("schedule.ics")));
-            var provider = new Ical4jInMemoryCalendarProvider(new DefaultMapper(), new Ical4jHttpFactory(http, url));
-            var cache = new InMemoryCalendarCache(CALENDAR_FILE);
-            return new InMemoryTrashCollectionCalendar(provider, cache);
-
-        } catch (Exception e) {
-            throw new IllegalStateException(e);
-        }
-    }
+    private final HttpClient http = mock(HttpClient.class);
 
     private static record Scenario(LocalDate now, TimeZone system, TrashCollection expected) {
     }
@@ -126,7 +111,7 @@ public class InMemoryTrashCollectionCalendarTest {
     public void shouldFindTrashCollection(Scenario scenario) {
         try {
             TimeZone.setDefault(scenario.system);
-            var calendar = calendar();
+            var calendar = calendar(CALENDAR_2017);
 
             var nextCollection = calendar.findNextTrashCollectionAfter(scenario.now);
 
@@ -137,9 +122,68 @@ public class InMemoryTrashCollectionCalendarTest {
         }
     }
 
+    @ValueSource(strings = { "2017-12-27", "2017-12-28", "2018-01-01" })
+    @ParameterizedTest
+    public void oldCalendarShouldFallbackToLastTrashCollection(String after) {
+        try {
+            TimeZone.setDefault(getTimeZone("Europe/Berlin"));
+            var calendar = calendar(CALENDAR_2017);
+
+            var nextCollection = calendar.findNextTrashCollectionAfter(LocalDate.parse(after));
+
+            assertEquals(trashCollection("2017-12-28", "PAPER|PLASTIC"), nextCollection);
+        } finally {
+            TimeZone.setDefault(null);
+        }
+    }
+
+    @Test
+    public void updateYearShouldFindFirstCollection() throws Exception {
+        try {
+            TimeZone.setDefault(getTimeZone("Europe/Berlin"));
+            var calendar = calendar(CALENDAR_2017);
+            var last2017 = calendar.findNextTrashCollectionAfter(LocalDate.parse("2017-12-27"));
+
+            mockHttpCalendar(CALENDAR_2023);
+            calendar.update();
+            var next = calendar.findNextTrashCollectionAfter(last2017.date());
+
+            assertEquals(trashCollection("2023-01-02", "PAPER|PLASTIC"), next);
+
+        } finally {
+            TimeZone.setDefault(null);
+        }
+    }
+
     private static TrashCollection trashCollection(String dateString, String cansString) {
         var date = LocalDate.parse(dateString);
         var cans = stream(cansString.split("\\|")).map(TrashCan::valueOf).collect(toSet());
         return new TrashCollection(date, cans);
+    }
+
+    @AfterEach
+    @BeforeEach
+    public void deleteCalenderFile() throws IOException {
+        deleteIfExists(CALENDAR_FILE);
+    }
+
+    private InMemoryTrashCollectionCalendar calendar(String file) {
+        try {
+            mockHttpCalendar(file);
+            var provider = new Ical4jInMemoryCalendarProvider(new DefaultMapper(), new Ical4jHttpFactory(http, URL));
+            var cache = new InMemoryCalendarCache(CALENDAR_FILE);
+            return new InMemoryTrashCollectionCalendar(provider, cache);
+
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    private void mockHttpCalendar(String file) {
+        try {
+            when(http.get(URL)).then(it -> new HttpResponse(200, URL, false, getClass().getResourceAsStream(file)));
+        } catch (Exception e) {
+            throw new IllegalStateException(e);
+        }
     }
 }

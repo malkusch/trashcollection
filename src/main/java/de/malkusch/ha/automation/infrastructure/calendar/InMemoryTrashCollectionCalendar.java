@@ -40,10 +40,20 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
             return collections.stream();
         }
 
+        TrashCollection first() {
+            return collections.stream() //
+                    .min(SORT_BY_DATE) //
+                    .orElseThrow(() -> new IllegalStateException("Can't find first trash collection"));
+        }
+
+        TrashCollection last() {
+            return collections.stream() //
+                    .max(SORT_BY_DATE) //
+                    .orElseThrow(() -> new IllegalStateException("Can't find last trash collection"));
+        }
+
         public String toString() {
-            var min = stream().min(SORT_BY_DATE).map(it -> it.date()).get();
-            var max = stream().max(SORT_BY_DATE).map(it -> it.date()).get();
-            return String.format("[%s - %s, n=%d]", min, max, collections.size());
+            return String.format("[%s - %s, n=%d]", first().date(), last().date(), collections.size());
         }
     }
 
@@ -73,7 +83,12 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
         return collections.stream() //
                 .filter(it -> it.date().isAfter(after)) //
                 .min(SORT_BY_DATE) //
-                .orElseThrow(() -> new IllegalStateException("Can't find next trash collection after " + after));
+
+                .orElseGet(() -> {
+                    var last = collections.last();
+                    log.warn("Can't find last trash collection after {}, falling back to last {}", after, last);
+                    return last;
+                });
     }
 
     @Override
@@ -88,6 +103,9 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
             collections = provider.fetch();
             log.info("Updated calendar: {}", collections);
             cache.store(collections);
+
+        } catch (InterruptedException e) {
+            throw e;
 
         } catch (Exception e) {
             var event = new ErrorLogged("Failed updating calendar");
