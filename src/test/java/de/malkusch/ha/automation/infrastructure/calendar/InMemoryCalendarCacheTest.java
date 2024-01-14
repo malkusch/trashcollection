@@ -36,7 +36,7 @@ public class InMemoryCalendarCacheTest {
     public void setup() throws IOException, InterruptedException {
         var http = mock(HttpClient.class);
         var url = "ANY";
-        when(http.get(url)).then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("2017.ics")));
+        when(http.get(url)).then(it -> new HttpResponse(200, url, false, getClass().getResourceAsStream("2023.ics")));
         provider = new Ical4jInMemoryCalendarProvider(new DefaultMapper(), new Ical4jHttpFactory(http, url));
         cache = new InMemoryCalendarCache(FILE);
     }
@@ -50,5 +50,4 @@ public class InMemoryCalendarCacheTest {
 
         assertEquals(source, copy);
     }
-
 }

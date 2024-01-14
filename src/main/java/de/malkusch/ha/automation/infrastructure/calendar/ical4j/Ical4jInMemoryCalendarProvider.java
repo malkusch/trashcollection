@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
 import java.time.temporal.TemporalAccessor;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -36,7 +37,7 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
 
         var limit = now().plusMonths(15);
         var incompleteCollections = events.stream() //
-                .map(this::toIncompleteTrashCollection) //
+                .flatMap(it -> this.toIncompleteTrashCollection(it).stream()) //
                 .filter(it -> it.date().isBefore(limit)) //
                 .collect(groupingBy(IncompleteTrashCollection::date));
 
@@ -59,15 +60,15 @@ public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarPro
         return new TrashCollection(date, cans);
     }
 
-    private IncompleteTrashCollection toIncompleteTrashCollection(VEvent event) {
+    private Optional<IncompleteTrashCollection> toIncompleteTrashCollection(VEvent event) {
         var date = collectionDate(event);
 
-        var can = event.getProperty(SUMMARY) //
+        var summary = event.getProperty(SUMMARY) //
                 .map(Property::getValue) //
-                .map(mapper::toTrashCan) //
                 .orElseThrow(() -> new IllegalStateException(event + " has no summary"));
 
-        return new IncompleteTrashCollection(date, can);
+        return mapper.toTrashCan(summary) //
+                .map(can -> new IncompleteTrashCollection(date, can));
     }
 
     private static LocalDate collectionDate(VEvent event) {

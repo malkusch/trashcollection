@@ -6,7 +6,7 @@ This is an application which would send a Telegram message on trash collection d
 
 Requirements:
 
-- Java-16
+- Java-17
 
 ## Get the application
 

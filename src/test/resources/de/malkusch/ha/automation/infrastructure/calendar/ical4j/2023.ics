@@ -1,1101 +1,1292 @@
-﻿BEGIN:VCALENDAR
-METHOD:PUBLISH
-PRODID:-//landratsamt-roth.de//NONSGML c-ware 1.0//
+BEGIN:VCALENDAR
 VERSION:2.0
-X-WR-CALNAME:Abfuhrdaten Landratsamt-Roth
-X-WR-CALDESC:Abfuhrtermine Landratsamt-Roth / 2023 für Roth\, Rothaurach\,
-  Brunhildstr. 1
+METHOD:PUBLISH
+X-WR-CALNAME:Abfuhrkalender-Roth-2023
+PRODID:-//awido.cubefour.de//iCal
+X-WR-CALDESC:Abfuhrkalender
 X-WR-TIMEZONE:Europe/Berlin
+CALSCALE:GREGORIAN
+
 BEGIN:VEVENT
-UID:20230102T000000CET-45797@landratsamt-roth.de
-DTSTAMP:20230102T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230102
-DTEND;VALUE=DATE:20230102
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230102T000000CET-44198@landratsamt-roth.de
-DTSTAMP:20230102T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230102
-DTEND;VALUE=DATE:20230102
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230105T000000CET-44809@landratsamt-roth.de
-DTSTAMP:20230105T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230105
-DTEND;VALUE=DATE:20230105
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230105T000000CET-44081@landratsamt-roth.de
-DTSTAMP:20230105T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230105
-DTEND;VALUE=DATE:20230105
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230119T000000CET-44810@landratsamt-roth.de
-DTSTAMP:20230119T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230119
-DTEND;VALUE=DATE:20230119
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230119T000000CET-44082@landratsamt-roth.de
-DTSTAMP:20230119T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230119
-DTEND;VALUE=DATE:20230119
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230130T000000CET-45798@landratsamt-roth.de
-DTSTAMP:20230130T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230130
-DTEND;VALUE=DATE:20230130
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230130T000000CET-44199@landratsamt-roth.de
-DTSTAMP:20230130T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230130
-DTEND;VALUE=DATE:20230130
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230202T000000CET-44811@landratsamt-roth.de
-DTSTAMP:20230202T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230202
-DTEND;VALUE=DATE:20230202
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230202T000000CET-44083@landratsamt-roth.de
-DTSTAMP:20230202T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230202
-DTEND;VALUE=DATE:20230202
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230216T000000CET-44812@landratsamt-roth.de
-DTSTAMP:20230216T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230216
-DTEND;VALUE=DATE:20230216
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230216T000000CET-44084@landratsamt-roth.de
-DTSTAMP:20230216T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230216
-DTEND;VALUE=DATE:20230216
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230227T000000CET-45799@landratsamt-roth.de
-DTSTAMP:20230227T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230227
-DTEND;VALUE=DATE:20230227
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230227T000000CET-44200@landratsamt-roth.de
-DTSTAMP:20230227T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230227
-DTEND;VALUE=DATE:20230227
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230302T000000CET-44813@landratsamt-roth.de
-DTSTAMP:20230302T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230302
-DTEND;VALUE=DATE:20230302
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230302T000000CET-44085@landratsamt-roth.de
-DTSTAMP:20230302T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230302
-DTEND;VALUE=DATE:20230302
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230316T000000CET-44814@landratsamt-roth.de
-DTSTAMP:20230316T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230316
-DTEND;VALUE=DATE:20230316
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230316T000000CET-44086@landratsamt-roth.de
-DTSTAMP:20230316T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230316
-DTEND;VALUE=DATE:20230316
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230327T000000CET-45800@landratsamt-roth.de
-DTSTAMP:20230327T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230327
-DTEND;VALUE=DATE:20230327
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230327T000000CET-44201@landratsamt-roth.de
-DTSTAMP:20230327T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230327
-DTEND;VALUE=DATE:20230327
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230330T000000CET-44815@landratsamt-roth.de
-DTSTAMP:20230330T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230330
-DTEND;VALUE=DATE:20230330
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230330T000000CET-44087@landratsamt-roth.de
-DTSTAMP:20230330T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230330
-DTEND;VALUE=DATE:20230330
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230414T000000CET-44816@landratsamt-roth.de
-DTSTAMP:20230414T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230414
-DTEND;VALUE=DATE:20230414
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230414T000000CET-44088@landratsamt-roth.de
-DTSTAMP:20230414T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230414
-DTEND;VALUE=DATE:20230414
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230427T000000CET-44817@landratsamt-roth.de
-DTSTAMP:20230427T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230427
-DTEND;VALUE=DATE:20230427
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230427T000000CET-44089@landratsamt-roth.de
-DTSTAMP:20230427T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230427
-DTEND;VALUE=DATE:20230427
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230428T000000CET-45801@landratsamt-roth.de
-DTSTAMP:20230428T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230428
-DTEND;VALUE=DATE:20230428
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230428T000000CET-44202@landratsamt-roth.de
-DTSTAMP:20230428T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230428
-DTEND;VALUE=DATE:20230428
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230511T000000CET-44818@landratsamt-roth.de
-DTSTAMP:20230511T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230511
-DTEND;VALUE=DATE:20230511
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230511T000000CET-44090@landratsamt-roth.de
-DTSTAMP:20230511T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230511
-DTEND;VALUE=DATE:20230511
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230525T000000CET-44819@landratsamt-roth.de
-DTSTAMP:20230525T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-RM-20230525T0000001
+SUMMARY:Restmüll in Roth
 DTSTART;VALUE=DATE:20230525
-DTEND;VALUE=DATE:20230525
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20230526
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20230525T000000CET-44091@landratsamt-roth.de
-DTSTAMP:20230525T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-BT-20230525T0000002
+SUMMARY:Biotonne in Roth
 DTSTART;VALUE=DATE:20230525
-DTEND;VALUE=DATE:20230525
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20230526
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20230531T000000CET-45802@landratsamt-roth.de
-DTSTAMP:20230531T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230531
-DTEND;VALUE=DATE:20230531
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
+UID:AWIDO-PT-20230102T0000003
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230102
+DTEND;VALUE=DATE:20230103
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20230531T000000CET-44203@landratsamt-roth.de
-DTSTAMP:20230531T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230531
-DTEND;VALUE=DATE:20230531
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
+UID:AWIDO-GS-20230102T0000004
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230102
+DTEND;VALUE=DATE:20230103
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20230609T000000CET-44820@landratsamt-roth.de
-DTSTAMP:20230609T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230609
-DTEND;VALUE=DATE:20230609
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230609T000000CET-44092@landratsamt-roth.de
-DTSTAMP:20230609T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230609
-DTEND;VALUE=DATE:20230609
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230622T000000CET-44821@landratsamt-roth.de
-DTSTAMP:20230622T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230622
-DTEND;VALUE=DATE:20230622
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230622T000000CET-44093@landratsamt-roth.de
-DTSTAMP:20230622T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230622
-DTEND;VALUE=DATE:20230622
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230703T000000CET-45803@landratsamt-roth.de
-DTSTAMP:20230703T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230703
-DTEND;VALUE=DATE:20230703
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230703T000000CET-44204@landratsamt-roth.de
-DTSTAMP:20230703T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230703
-DTEND;VALUE=DATE:20230703
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230706T000000CET-44822@landratsamt-roth.de
-DTSTAMP:20230706T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230706
-DTEND;VALUE=DATE:20230706
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230706T000000CET-44094@landratsamt-roth.de
-DTSTAMP:20230706T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230706
-DTEND;VALUE=DATE:20230706
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230720T000000CET-44823@landratsamt-roth.de
-DTSTAMP:20230720T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230720
-DTEND;VALUE=DATE:20230720
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230720T000000CET-44095@landratsamt-roth.de
-DTSTAMP:20230720T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230720
-DTEND;VALUE=DATE:20230720
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230728T000000CET-45804@landratsamt-roth.de
-DTSTAMP:20230728T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230728
-DTEND;VALUE=DATE:20230728
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230728T000000CET-44205@landratsamt-roth.de
-DTSTAMP:20230728T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230728
-DTEND;VALUE=DATE:20230728
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230803T000000CET-44824@landratsamt-roth.de
-DTSTAMP:20230803T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230803
-DTEND;VALUE=DATE:20230803
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230803T000000CET-44096@landratsamt-roth.de
-DTSTAMP:20230803T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230803
-DTEND;VALUE=DATE:20230803
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230817T000000CET-44825@landratsamt-roth.de
-DTSTAMP:20230817T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230817
-DTEND;VALUE=DATE:20230817
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230817T000000CET-44097@landratsamt-roth.de
-DTSTAMP:20230817T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230817
-DTEND;VALUE=DATE:20230817
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230825T000000CET-45805@landratsamt-roth.de
-DTSTAMP:20230825T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230825
-DTEND;VALUE=DATE:20230825
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230825T000000CET-44206@landratsamt-roth.de
-DTSTAMP:20230825T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230825
-DTEND;VALUE=DATE:20230825
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230831T000000CET-44826@landratsamt-roth.de
-DTSTAMP:20230831T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230831
-DTEND;VALUE=DATE:20230831
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230831T000000CET-44098@landratsamt-roth.de
-DTSTAMP:20230831T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230831
-DTEND;VALUE=DATE:20230831
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230914T000000CET-44827@landratsamt-roth.de
-DTSTAMP:20230914T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230914
-DTEND;VALUE=DATE:20230914
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230914T000000CET-44099@landratsamt-roth.de
-DTSTAMP:20230914T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230914
-DTEND;VALUE=DATE:20230914
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230922T000000CET-45806@landratsamt-roth.de
-DTSTAMP:20230922T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230922
-DTEND;VALUE=DATE:20230922
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230922T000000CET-44207@landratsamt-roth.de
-DTSTAMP:20230922T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20230922
-DTEND;VALUE=DATE:20230922
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20230928T000000CET-44828@landratsamt-roth.de
-DTSTAMP:20230928T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-RM-20230928T0000005
+SUMMARY:Restmüll in Roth
 DTSTART;VALUE=DATE:20230928
-DTEND;VALUE=DATE:20230928
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20230929
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20230928T000000CET-44100@landratsamt-roth.de
-DTSTAMP:20230928T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-BT-20230928T0000006
+SUMMARY:Biotonne in Roth
 DTSTART;VALUE=DATE:20230928
-DTEND;VALUE=DATE:20230928
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20230929
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231012T000000CET-44829@landratsamt-roth.de
-DTSTAMP:20231012T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231012
-DTEND;VALUE=DATE:20231012
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231012T000000CET-44101@landratsamt-roth.de
-DTSTAMP:20231012T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231012
-DTEND;VALUE=DATE:20231012
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231025T000000CET-45808@landratsamt-roth.de
-DTSTAMP:20231025T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231025
-DTEND;VALUE=DATE:20231025
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231025T000000CET-44208@landratsamt-roth.de
-DTSTAMP:20231025T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231025
-DTEND;VALUE=DATE:20231025
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231026T000000CET-44830@landratsamt-roth.de
-DTSTAMP:20231026T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231026
-DTEND;VALUE=DATE:20231026
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231026T000000CET-44102@landratsamt-roth.de
-DTSTAMP:20231026T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231026
-DTEND;VALUE=DATE:20231026
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231109T000000CET-44831@landratsamt-roth.de
-DTSTAMP:20231109T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-RM-20231109T0000007
+SUMMARY:Restmüll in Roth
 DTSTART;VALUE=DATE:20231109
-DTEND;VALUE=DATE:20231109
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231110
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231109T000000CET-44103@landratsamt-roth.de
-DTSTAMP:20231109T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-BT-20231109T0000008
+SUMMARY:Biotonne in Roth
 DTSTART;VALUE=DATE:20231109
-DTEND;VALUE=DATE:20231109
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231110
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231122T000000CET-45809@landratsamt-roth.de
-DTSTAMP:20231122T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231122
-DTEND;VALUE=DATE:20231122
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231122T000000CET-44209@landratsamt-roth.de
-DTSTAMP:20231122T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231122
-DTEND;VALUE=DATE:20231122
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
-END:VEVENT
-BEGIN:VEVENT
-UID:20231123T000000CET-44832@landratsamt-roth.de
-DTSTAMP:20231123T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-RM-20231123T0000009
+SUMMARY:Restmüll in Roth
 DTSTART;VALUE=DATE:20231123
-DTEND;VALUE=DATE:20231123
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231124
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231123T000000CET-44104@landratsamt-roth.de
-DTSTAMP:20231123T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-BT-20231123T00000010
+SUMMARY:Biotonne in Roth
 DTSTART;VALUE=DATE:20231123
+DTEND;VALUE=DATE:20231124
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230712T00000011
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230712
+DTEND;VALUE=DATE:20230713
+DTSTAMP:20240103T000000Z
+LOCATION:Eckersmühlen; Festplatz am Föhrenbaum
+DESCRIPTION:09:30 - 10:30
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20231122T00000012
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20231122
 DTEND;VALUE=DATE:20231123
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231207T000000CET-44833@landratsamt-roth.de
-DTSTAMP:20231207T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-GS-20231122T00000013
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20231122
+DTEND;VALUE=DATE:20231123
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230719T00000014
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230719
+DTEND;VALUE=DATE:20230720
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Festplatz
+DESCRIPTION:09:00 - 10:00
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230202T00000015
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230202
+DTEND;VALUE=DATE:20230203
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230202T00000016
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230202
+DTEND;VALUE=DATE:20230203
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230428T00000017
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230428
+DTEND;VALUE=DATE:20230429
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230428T00000018
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230428
+DTEND;VALUE=DATE:20230429
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230427T00000019
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230427
+DTEND;VALUE=DATE:20230428
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230427T00000020
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230427
+DTEND;VALUE=DATE:20230428
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230105T00000021
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230105
+DTEND;VALUE=DATE:20230106
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230105T00000022
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230105
+DTEND;VALUE=DATE:20230106
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230216T00000023
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230216
+DTEND;VALUE=DATE:20230217
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230216T00000024
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230216
+DTEND;VALUE=DATE:20230217
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230711T00000025
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230711
+DTEND;VALUE=DATE:20230712
+DTSTAMP:20240103T000000Z
+LOCATION:Rothaurach; Kriegerdenkmal gegenüb. Gasthof "Böhm"
+DESCRIPTION:10:00 - 10:30
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20231207T00000026
+SUMMARY:Restmüll in Roth
 DTSTART;VALUE=DATE:20231207
-DTEND;VALUE=DATE:20231207
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231208
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231207T000000CET-44105@landratsamt-roth.de
-DTSTAMP:20231207T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-BT-20231207T00000027
+SUMMARY:Biotonne in Roth
 DTSTART;VALUE=DATE:20231207
-DTEND;VALUE=DATE:20231207
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231208
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231220T000000CET-45807@landratsamt-roth.de
-DTSTAMP:20231220T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231220
-DTEND;VALUE=DATE:20231220
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Gelber Sack
-URL:http://www.landratsamt-roth.de
+UID:AWIDO-RM-20230720T00000028
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230720
+DTEND;VALUE=DATE:20230721
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231220T000000CET-44210@landratsamt-roth.de
-DTSTAMP:20231220T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
-DTSTART;VALUE=DATE:20231220
-DTEND;VALUE=DATE:20231220
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Papiertonne
-URL:http://www.landratsamt-roth.de
+UID:AWIDO-BT-20230720T00000029
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230720
+DTEND;VALUE=DATE:20230721
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231221T000000CET-44834@landratsamt-roth.de
-DTSTAMP:20231221T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-PT-20230327T00000030
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230327
+DTEND;VALUE=DATE:20230328
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230327T00000031
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230327
+DTEND;VALUE=DATE:20230328
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230302T00000032
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230302
+DTEND;VALUE=DATE:20230303
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230302T00000033
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230302
+DTEND;VALUE=DATE:20230303
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230922T00000034
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230922
+DTEND;VALUE=DATE:20230923
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230922T00000035
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230922
+DTEND;VALUE=DATE:20230923
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230728T00000036
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230728
+DTEND;VALUE=DATE:20230729
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230728T00000037
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230728
+DTEND;VALUE=DATE:20230729
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20231012T00000038
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20231012
+DTEND;VALUE=DATE:20231013
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20231012T00000039
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20231012
+DTEND;VALUE=DATE:20231013
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230609T00000040
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230609
+DTEND;VALUE=DATE:20230610
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230609T00000041
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230609
+DTEND;VALUE=DATE:20230610
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230130T00000042
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230130
+DTEND;VALUE=DATE:20230131
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230130T00000043
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230130
+DTEND;VALUE=DATE:20230131
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20231026T00000044
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20231026
+DTEND;VALUE=DATE:20231027
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20231026T00000045
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20231026
+DTEND;VALUE=DATE:20231027
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230817T00000046
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230817
+DTEND;VALUE=DATE:20230818
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230817T00000047
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230817
+DTEND;VALUE=DATE:20230818
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230706T00000048
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230706
+DTEND;VALUE=DATE:20230707
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230706T00000049
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230706
+DTEND;VALUE=DATE:20230707
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230803T00000050
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230803
+DTEND;VALUE=DATE:20230804
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230803T00000051
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230803
+DTEND;VALUE=DATE:20230804
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20231221T00000052
+SUMMARY:Restmüll in Roth
 DTSTART;VALUE=DATE:20231221
-DTEND;VALUE=DATE:20231221
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Biomüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231222
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
 BEGIN:VEVENT
-UID:20231221T000000CET-44106@landratsamt-roth.de
-DTSTAMP:20231221T000000Z
-CATEGORIES:Abfuhrtermine
-DESCRIPTION:Bitte stellen Sie Ihre Abfälle am Morgen der Entleerung bis sp
- ätestens 06:00 Uhr bereit. Die Abfuhr findet von 06:00 bis 20:00 Uhr im Zw
- eischichtbetrieb statt. Die Gefäße müssen mit der Deckelöffnung zur Straße
-  stehen und frei zugänglich sein.
+UID:AWIDO-BT-20231221T00000053
+SUMMARY:Biotonne in Roth
 DTSTART;VALUE=DATE:20231221
-DTEND;VALUE=DATE:20231221
-LOCATION:Roth\, Rothaurach\, Brunhildstr. 1
-SUMMARY:Abfuhr: Restmüll
-URL:http://www.landratsamt-roth.de
+DTEND;VALUE=DATE:20231222
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
 END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230703T00000054
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230703
+DTEND;VALUE=DATE:20230704
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230703T00000055
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230703
+DTEND;VALUE=DATE:20230704
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230323T00000056
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230323
+DTEND;VALUE=DATE:20230324
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Festplatz
+DESCRIPTION:13:00 - 14:00
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230531T00000057
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230531
+DTEND;VALUE=DATE:20230601
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230531T00000058
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230531
+DTEND;VALUE=DATE:20230601
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20231025T00000059
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20231025
+DTEND;VALUE=DATE:20231026
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20231025T00000060
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20231025
+DTEND;VALUE=DATE:20231026
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230718T00000061
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230718
+DTEND;VALUE=DATE:20230719
+DTSTAMP:20240103T000000Z
+LOCATION:Pfaffenhofen; Ende Industriestrasse
+DESCRIPTION:17:00 - 17:30
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230831T00000062
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230831
+DTEND;VALUE=DATE:20230901
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230831T00000063
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230831
+DTEND;VALUE=DATE:20230901
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230119T00000064
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230119
+DTEND;VALUE=DATE:20230120
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230119T00000065
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230119
+DTEND;VALUE=DATE:20230120
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230929T00000066
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230929
+DTEND;VALUE=DATE:20230930
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Festplatz
+DESCRIPTION:15:00 - 16:00
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230227T00000067
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230227
+DTEND;VALUE=DATE:20230228
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230227T00000068
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230227
+DTEND;VALUE=DATE:20230228
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230330T00000069
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230330
+DTEND;VALUE=DATE:20230331
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230330T00000070
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230330
+DTEND;VALUE=DATE:20230331
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-SM-20230322T00000071
+SUMMARY:Umweltmobil in Roth
+DTSTART;VALUE=DATE:20230322
+DTEND;VALUE=DATE:20230323
+DTSTAMP:20240103T000000Z
+LOCATION:Eckersmühlen; Festplatz am Föhrenbaum
+DESCRIPTION:09:30 - 10:30
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20230825T00000072
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20230825
+DTEND;VALUE=DATE:20230826
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20230825T00000073
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20230825
+DTEND;VALUE=DATE:20230826
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230316T00000074
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230316
+DTEND;VALUE=DATE:20230317
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230316T00000075
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230316
+DTEND;VALUE=DATE:20230317
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230914T00000076
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230914
+DTEND;VALUE=DATE:20230915
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230914T00000077
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230914
+DTEND;VALUE=DATE:20230915
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230511T00000078
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230511
+DTEND;VALUE=DATE:20230512
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230511T00000079
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230511
+DTEND;VALUE=DATE:20230512
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230622T00000080
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230622
+DTEND;VALUE=DATE:20230623
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230622T00000081
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230622
+DTEND;VALUE=DATE:20230623
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-PT-20231220T00000082
+SUMMARY:Papiertonne in Roth
+DTSTART;VALUE=DATE:20231220
+DTEND;VALUE=DATE:20231221
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-GS-20231220T00000083
+SUMMARY:Gelber Sack in Roth
+DTSTART;VALUE=DATE:20231220
+DTEND;VALUE=DATE:20231221
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-RM-20230414T00000084
+SUMMARY:Restmüll in Roth
+DTSTART;VALUE=DATE:20230414
+DTEND;VALUE=DATE:20230415
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
+BEGIN:VEVENT
+UID:AWIDO-BT-20230414T00000085
+SUMMARY:Biotonne in Roth
+DTSTART;VALUE=DATE:20230414
+DTEND;VALUE=DATE:20230415
+DTSTAMP:20240103T000000Z
+LOCATION:Roth; Brunhildstr.
+TRANSP:TRANSPARENT
+SEQUENCE:0
+CLASS:PUBLIC
+PRIORITY:9
+STATUS:CONFIRMED
+URL:http://https://www.landratsamt-roth.de
+END:VEVENT
+
 END:VCALENDAR

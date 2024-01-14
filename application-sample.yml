@@ -1,6 +1,6 @@
 logging.level.de.malkusch: DEBUG
 trashday:
-   url: http://example.org
+   url: http://example.org?year={year}
 notification:
    telegram:
       token: aToken

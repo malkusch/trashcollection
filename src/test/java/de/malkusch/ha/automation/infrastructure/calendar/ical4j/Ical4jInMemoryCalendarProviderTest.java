@@ -24,7 +24,7 @@ public class Ical4jInMemoryCalendarProviderTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = { "2017", "2023" })
+    @ValueSource(strings = { "2023", "2024" })
     public void shouldParseTrashCollections(String year) throws Exception {
         var provider = provider(year + ".ics");
 

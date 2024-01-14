@@ -35,8 +35,8 @@ public class InMemoryTrashCollectionCalendarTest {
 
     private static final String URL = "ANY";
     private static final Path CALENDAR_FILE = Paths.get("/tmp/trash-calendar-test");
-    private static final String CALENDAR_2017 = "2017.ics";
     private static final String CALENDAR_2023 = "2023.ics";
+    private static final String CALENDAR_2024 = "2024.ics";
 
     private final HttpClient http = mock(HttpClient.class);
 
@@ -45,45 +45,58 @@ public class InMemoryTrashCollectionCalendarTest {
 
     private static Stream<Scenario> shouldFindTrashCollection() {
         return Stream.of( //
-                scenarios("2016-12-25", "2017-01-04", trashCollection("2017-01-05", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-01-05", "2017-01-10", trashCollection("2017-01-11", "PAPER|PLASTIC")), //
-                scenarios("2017-01-11", "2017-01-18", trashCollection("2017-01-19", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-01-19", "2017-02-01", trashCollection("2017-02-02", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-02-02", "2017-02-06", trashCollection("2017-02-07", "PAPER|PLASTIC")), //
-                scenarios("2017-02-07", "2017-02-15", trashCollection("2017-02-16", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-02-16", "2017-03-01", trashCollection("2017-03-02", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-03-02", "2017-03-06", trashCollection("2017-03-07", "PAPER|PLASTIC")), //
-                scenarios("2017-03-07", "2017-03-15", trashCollection("2017-03-16", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-03-16", "2017-03-29", trashCollection("2017-03-30", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-03-30", "2017-04-02", trashCollection("2017-04-03", "PAPER|PLASTIC")), //
-                scenarios("2017-04-03", "2017-04-12", trashCollection("2017-04-13", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-04-13", "2017-04-26", trashCollection("2017-04-27", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-04-27", "2017-05-03", trashCollection("2017-05-04", "PAPER|PLASTIC")), //
-                scenarios("2017-05-04", "2017-05-10", trashCollection("2017-05-11", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-05-11", "2017-05-25", trashCollection("2017-05-26", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-05-26", "2017-05-31", trashCollection("2017-06-01", "PAPER|PLASTIC")), //
-                scenarios("2017-06-01", "2017-06-08", trashCollection("2017-06-09", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-06-09", "2017-06-21", trashCollection("2017-06-22", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-06-22", "2017-07-04", trashCollection("2017-07-05", "PAPER|PLASTIC")), //
-                scenarios("2017-07-05", "2017-07-05", trashCollection("2017-07-06", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-07-06", "2017-07-19", trashCollection("2017-07-20", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-07-20", "2017-08-01", trashCollection("2017-08-02", "PAPER|PLASTIC")), //
-                scenarios("2017-08-02", "2017-08-02", trashCollection("2017-08-03", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-08-03", "2017-08-16", trashCollection("2017-08-17", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-08-17", "2017-08-30", trashCollection("2017-08-31", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-08-31", "2017-09-04", trashCollection("2017-09-05", "PAPER|PLASTIC")), //
-                scenarios("2017-09-05", "2017-09-13", trashCollection("2017-09-14", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-09-14", "2017-09-27", trashCollection("2017-09-28", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-09-28", "2017-09-28", trashCollection("2017-09-29", "PAPER|PLASTIC")), //
-                scenarios("2017-09-29", "2017-10-11", trashCollection("2017-10-12", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-10-12", "2017-10-25", trashCollection("2017-10-26", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-10-26", "2017-10-26", trashCollection("2017-10-27", "PAPER|PLASTIC")), //
-                scenarios("2017-10-27", "2017-11-08", trashCollection("2017-11-09", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-11-09", "2017-11-22", trashCollection("2017-11-23", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-11-23", "2017-11-28", trashCollection("2017-11-29", "PAPER|PLASTIC")), //
-                scenarios("2017-11-29", "2017-12-06", trashCollection("2017-12-07", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-12-07", "2017-12-20", trashCollection("2017-12-21", "RESIDUAL|ORGANIC")), //
-                scenarios("2017-12-21", "2017-12-27", trashCollection("2017-12-28", "PAPER|PLASTIC")) //
+                scenarios("2022-12-25", "2023-01-01", trashCollection("2023-01-02", "PAPER|PLASTIC")), //
+                scenarios("2023-01-02", "2023-01-04", trashCollection("2023-01-05", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-01-05", "2023-01-18", trashCollection("2023-01-19", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-01-19", "2023-01-29", trashCollection("2023-01-30", "PAPER|PLASTIC")), //
+
+                scenarios("2023-01-30", "2023-02-01", trashCollection("2023-02-02", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-02-02", "2023-02-15", trashCollection("2023-02-16", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-02-16", "2023-02-26", trashCollection("2023-02-27", "PAPER|PLASTIC")), //
+
+                scenarios("2023-02-27", "2023-03-01", trashCollection("2023-03-02", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-03-02", "2023-03-15", trashCollection("2023-03-16", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-03-16", "2023-03-26", trashCollection("2023-03-27", "PAPER|PLASTIC")), //
+                scenarios("2023-03-27", "2023-03-29", trashCollection("2023-03-30", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-03-30", "2023-04-13", trashCollection("2023-04-14", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-04-14", "2023-04-26", trashCollection("2023-04-27", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-04-27", "2023-04-27", trashCollection("2023-04-28", "PAPER|PLASTIC")), //
+
+                scenarios("2023-04-28", "2023-05-10", trashCollection("2023-05-11", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-05-11", "2023-05-24", trashCollection("2023-05-25", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-05-25", "2023-05-30", trashCollection("2023-05-31", "PAPER|PLASTIC")), //
+
+                scenarios("2023-05-31", "2023-06-08", trashCollection("2023-06-09", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-06-09", "2023-06-21", trashCollection("2023-06-22", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-06-22", "2023-07-02", trashCollection("2023-07-03", "PAPER|PLASTIC")), //
+                scenarios("2023-07-03", "2023-07-05", trashCollection("2023-07-06", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-07-06", "2023-07-19", trashCollection("2023-07-20", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-07-20", "2023-07-27", trashCollection("2023-07-28", "PAPER|PLASTIC")), //
+
+                scenarios("2023-07-28", "2023-08-02", trashCollection("2023-08-03", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-08-03", "2023-08-16", trashCollection("2023-08-17", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-08-17", "2023-08-24", trashCollection("2023-08-25", "PAPER|PLASTIC")), //
+                scenarios("2023-08-25", "2023-08-30", trashCollection("2023-08-31", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-08-31", "2023-09-13", trashCollection("2023-09-14", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-09-14", "2023-09-21", trashCollection("2023-09-22", "PAPER|PLASTIC")), //
+                scenarios("2023-09-22", "2023-09-27", trashCollection("2023-09-28", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-09-28", "2023-10-11", trashCollection("2023-10-12", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-10-12", "2023-10-24", trashCollection("2023-10-25", "PAPER|PLASTIC")), //
+                scenarios("2023-10-25", "2023-10-25", trashCollection("2023-10-26", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-10-26", "2023-11-08", trashCollection("2023-11-09", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-11-09", "2023-11-21", trashCollection("2023-11-22", "PAPER|PLASTIC")), //
+                scenarios("2023-11-22", "2023-11-22", trashCollection("2023-11-23", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-11-23", "2023-12-06", trashCollection("2023-12-07", "RESIDUAL|ORGANIC")), //
+                scenarios("2023-12-07", "2023-12-19", trashCollection("2023-12-20", "PAPER|PLASTIC")), //
+                scenarios("2023-12-20", "2023-12-20", trashCollection("2023-12-21", "RESIDUAL|ORGANIC")), //
+
+                scenarios("2023-12-21", "2024-01-02", trashCollection("2023-12-21", "RESIDUAL|ORGANIC")) //
         ).flatMap(Function.identity());
 
     }
@@ -111,7 +124,7 @@ public class InMemoryTrashCollectionCalendarTest {
     public void shouldFindTrashCollection(Scenario scenario) {
         try {
             TimeZone.setDefault(scenario.system);
-            var calendar = calendar(CALENDAR_2017);
+            var calendar = calendar(CALENDAR_2023);
 
             var nextCollection = calendar.findNextTrashCollectionAfter(scenario.now);
 
@@ -122,16 +135,16 @@ public class InMemoryTrashCollectionCalendarTest {
         }
     }
 
-    @ValueSource(strings = { "2017-12-27", "2017-12-28", "2018-01-01" })
+    @ValueSource(strings = { "2023-12-20", "2023-12-21", "2023-12-22", "2024-01-01" })
     @ParameterizedTest
     public void oldCalendarShouldFallbackToLastTrashCollection(String after) {
         try {
             TimeZone.setDefault(getTimeZone("Europe/Berlin"));
-            var calendar = calendar(CALENDAR_2017);
+            var calendar = calendar(CALENDAR_2023);
 
             var nextCollection = calendar.findNextTrashCollectionAfter(LocalDate.parse(after));
 
-            assertEquals(trashCollection("2017-12-28", "PAPER|PLASTIC"), nextCollection);
+            assertEquals(trashCollection("2023-12-21", "RESIDUAL|ORGANIC"), nextCollection);
         } finally {
             TimeZone.setDefault(null);
         }
@@ -141,14 +154,14 @@ public class InMemoryTrashCollectionCalendarTest {
     public void updateYearShouldFindFirstCollection() throws Exception {
         try {
             TimeZone.setDefault(getTimeZone("Europe/Berlin"));
-            var calendar = calendar(CALENDAR_2017);
-            var last2017 = calendar.findNextTrashCollectionAfter(LocalDate.parse("2017-12-27"));
+            var calendar = calendar(CALENDAR_2023);
+            var last2023 = calendar.findNextTrashCollectionAfter(LocalDate.parse("2023-12-20"));
 
-            mockHttpCalendar(CALENDAR_2023);
+            mockHttpCalendar(CALENDAR_2024);
             calendar.update();
-            var next = calendar.findNextTrashCollectionAfter(last2017.date());
+            var next = calendar.findNextTrashCollectionAfter(last2023.date());
 
-            assertEquals(trashCollection("2023-01-02", "PAPER|PLASTIC"), next);
+            assertEquals(trashCollection("2024-01-05", "RESIDUAL|ORGANIC"), next);
 
         } finally {
             TimeZone.setDefault(null);
