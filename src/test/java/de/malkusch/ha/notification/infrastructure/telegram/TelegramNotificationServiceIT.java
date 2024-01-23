@@ -3,7 +3,7 @@ package de.malkusch.ha.notification.infrastructure.telegram;
 import static java.util.UUID.randomUUID;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
 import java.time.LocalDateTime;
 
@@ -27,7 +27,7 @@ public class TelegramNotificationServiceIT {
 
     @BeforeEach
     public void setup() {
-        assertTrue(isNoneBlank(token, chatId));
+        assumeTrue(isNoneBlank(token, chatId));
 
         var api = new TelegramBot(token);
         service = new TelegramNotificationService(api, chatId);
