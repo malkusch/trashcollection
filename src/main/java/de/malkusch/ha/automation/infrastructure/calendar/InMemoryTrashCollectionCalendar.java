@@ -1,16 +1,14 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
 import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
-import static java.util.Objects.requireNonNull;
 
 import java.io.IOException;
+import java.time.Clock;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.automation.model.TrashCollectionCalendar;
@@ -18,57 +16,24 @@ import de.malkusch.ha.shared.infrastructure.event.ErrorLogged;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service
-public final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, AutoCloseable {
+final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, AutoCloseable {
 
-    private static final Comparator<? super TrashCollection> SORT_BY_DATE = (a, b) -> a.date().compareTo(b.date());
+    static final Comparator<? super TrashCollection> SORT_BY_DATE = (a, b) -> a.date().compareTo(b.date());
 
     private volatile TrashCollections collections;
-    private final InMemoryCalendarProvider provider;
+    private final CalendarProvider provider;
     private final InMemoryCalendarCache cache;
+    private final Clock clock;
 
-    public static record TrashCollections(Collection<TrashCollection> collections) {
+    InMemoryTrashCollectionCalendar(CalendarProvider provider, InMemoryCalendarCache cache, Clock clock)
+            throws IOException {
 
-        public TrashCollections {
-            requireNonNull(collections);
-            if (collections.isEmpty()) {
-                throw new IllegalArgumentException("Trash collection is empty");
-            }
-        }
-
-        public Stream<TrashCollection> stream() {
-            return collections.stream();
-        }
-
-        TrashCollection first() {
-            return collections.stream() //
-                    .min(SORT_BY_DATE) //
-                    .orElseThrow(() -> new IllegalStateException("Can't find first trash collection"));
-        }
-
-        TrashCollection last() {
-            return collections.stream() //
-                    .max(SORT_BY_DATE) //
-                    .orElseThrow(() -> new IllegalStateException("Can't find last trash collection"));
-        }
-
-        public String toString() {
-            return String.format("[%s - %s, n=%d]", first().date(), last().date(), collections.size());
-        }
-    }
-
-    public static interface InMemoryCalendarProvider {
-
-        TrashCollections fetch() throws IOException, InterruptedException;
-
-    }
-
-    InMemoryTrashCollectionCalendar(InMemoryCalendarProvider provider, InMemoryCalendarCache cache) throws IOException {
         this.provider = provider;
         this.cache = cache;
+        this.clock = clock;
 
         try {
-            collections = provider.fetch();
+            collections = provider.fetch(LocalDate.now(clock));
 
         } catch (Exception e) {
             log.warn("Failed fetching Calendar, falling back to cached file", e);
@@ -100,7 +65,7 @@ public final class InMemoryTrashCollectionCalendar implements TrashCollectionCal
     void update() throws IOException, InterruptedException {
         try {
             log.info("Updating calendar");
-            collections = provider.fetch();
+            collections = provider.fetch(LocalDate.now(clock));
             log.info("Updated calendar: {}", collections);
             cache.store(collections);
 

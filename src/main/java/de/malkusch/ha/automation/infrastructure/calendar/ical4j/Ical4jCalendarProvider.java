@@ -1,6 +1,5 @@
 package de.malkusch.ha.automation.infrastructure.calendar.ical4j;
 
-import static java.time.LocalDate.now;
 import static java.util.stream.Collectors.groupingBy;
 import static net.fortuna.ical4j.model.Component.VEVENT;
 import static net.fortuna.ical4j.model.Property.SUMMARY;
@@ -13,10 +12,8 @@ import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Service;
-
-import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollectionCalendar.InMemoryCalendarProvider;
-import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollectionCalendar.TrashCollections;
+import de.malkusch.ha.automation.infrastructure.calendar.CalendarProvider;
+import de.malkusch.ha.automation.infrastructure.calendar.TrashCollections;
 import de.malkusch.ha.automation.model.TrashCan;
 import de.malkusch.ha.automation.model.TrashCollection;
 import lombok.RequiredArgsConstructor;
@@ -24,18 +21,17 @@ import net.fortuna.ical4j.model.Property;
 import net.fortuna.ical4j.model.component.VEvent;
 import net.fortuna.ical4j.model.property.DtStart;
 
-@Service
 @RequiredArgsConstructor
-public final class Ical4jInMemoryCalendarProvider implements InMemoryCalendarProvider {
+public final class Ical4jCalendarProvider implements CalendarProvider {
 
     private final TrashCanMapper mapper;
     private final Ical4jHttpFactory http;
 
     @Override
-    public TrashCollections fetch() throws IOException, InterruptedException {
-        List<VEvent> events = http.download().getComponents(VEVENT);
+    public TrashCollections fetch(LocalDate fetchDate) throws IOException, InterruptedException {
+        List<VEvent> events = http.download(fetchDate).getComponents(VEVENT);
 
-        var limit = now().plusMonths(15);
+        var limit = fetchDate.plusMonths(15);
         var incompleteCollections = events.stream() //
                 .flatMap(it -> this.toIncompleteTrashCollection(it).stream()) //
                 .filter(it -> it.date().isBefore(limit)) //

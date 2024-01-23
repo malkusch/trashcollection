@@ -15,9 +15,9 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 class TelegramConfiguration {
 
-    @ConfigurationProperties("notification.telegram")
-    @Component
     @Data
+    @Component
+    @ConfigurationProperties("notification.telegram")
     static class TelegramProperties {
         private String token;
         private String chatId;

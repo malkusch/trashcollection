@@ -1,10 +1,7 @@
 package de.malkusch.ha.automation.infrastructure.calendar.ical4j;
 
 import java.io.IOException;
-import java.time.Year;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
+import java.time.LocalDate;
 
 import com.damnhandy.uri.template.UriTemplate;
 
@@ -14,20 +11,19 @@ import net.fortuna.ical4j.data.CalendarBuilder;
 import net.fortuna.ical4j.data.ParserException;
 import net.fortuna.ical4j.model.Calendar;
 
-@Service
 @Slf4j
 public final class Ical4jHttpFactory {
 
     private final HttpClient http;
     private final UriTemplate uriTemplate;
 
-    public Ical4jHttpFactory(HttpClient http, @Value("${trashday.url}") String uriTemplate) {
+    public Ical4jHttpFactory(HttpClient http, String uriTemplate) {
         this.http = http;
         this.uriTemplate = UriTemplate.fromTemplate(uriTemplate);
     }
 
-    public Calendar download() throws IOException, InterruptedException {
-        var url = url(Year.now());
+    public Calendar download(LocalDate fetchDate) throws IOException, InterruptedException {
+        var url = url(fetchDate);
         log.debug("Downloading {}", url);
         try (var response = http.get(url)) {
             return new CalendarBuilder().build(response.body);
@@ -36,7 +32,7 @@ public final class Ical4jHttpFactory {
         }
     }
 
-    private String url(Year year) {
-        return uriTemplate.set("year", year.getValue()).expand();
+    private String url(LocalDate fetchDate) {
+        return uriTemplate.set("year", fetchDate.getYear()).expand();
     }
 }

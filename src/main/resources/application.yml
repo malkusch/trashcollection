@@ -6,5 +6,5 @@ http:
       delay: PT5S
       retries: 5
 calendar:
-   file: /tmp/trash-calendar
+   cache: /tmp/trash-calendar
    update: 59 39 */6 * * *

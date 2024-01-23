@@ -3,6 +3,7 @@ package de.malkusch.ha.notification.application;
 import static java.util.Locale.GERMANY;
 
 import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
 
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
@@ -24,7 +25,7 @@ public final class TrashCollectionNotificationApplicationService {
     public void onChanged(NextTrashCollectionChanged event) {
         var message = String.format("Die nächste Müllabfuhr kommt am %s: %s", //
                 date(event.nextCollection), //
-                event.nextCollection.trashCans());
+                trashCans(event.nextCollection));
         var notification = new Notification(message);
         notificationService.send(notification);
     }
@@ -33,9 +34,14 @@ public final class TrashCollectionNotificationApplicationService {
     public void onTrashDay(TomorrowsTrashDayNoticed event) {
         var message = String.format("Morgen (%s) kommt die Müllabfuhr: %s", //
                 date(event.nextCollection), //
-                event.nextCollection.trashCans());
+                trashCans(event.nextCollection));
         var notification = new Notification(message);
         notificationService.send(notification);
+    }
+
+    private static String trashCans(TrashCollection trashCollection) {
+        var cans = trashCollection.trashCans().stream().sorted().toArray();
+        return Arrays.toString(cans);
     }
 
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("E d.M.uu", GERMANY);

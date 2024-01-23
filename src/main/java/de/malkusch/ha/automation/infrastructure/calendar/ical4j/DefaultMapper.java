@@ -7,11 +7,8 @@ import static de.malkusch.ha.automation.model.TrashCan.RESIDUAL;
 
 import java.util.Optional;
 
-import org.springframework.stereotype.Service;
-
 import de.malkusch.ha.automation.model.TrashCan;
 
-@Service
 public final class DefaultMapper implements TrashCanMapper {
 
     @Override

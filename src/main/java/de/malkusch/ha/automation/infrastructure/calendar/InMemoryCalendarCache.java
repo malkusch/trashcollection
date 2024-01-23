@@ -9,7 +9,6 @@ import java.nio.file.Paths;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import de.malkusch.ha.automation.infrastructure.calendar.InMemoryTrashCollectionCalendar.TrashCollections;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
