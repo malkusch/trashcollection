@@ -3,12 +3,13 @@ package de.malkusch.ha.notification.infrastructure.telegram;
 import static java.util.UUID.randomUUID;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assumptions.assumeTrue;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
@@ -19,6 +20,7 @@ import com.pengrad.telegrambot.request.UnpinChatMessage;
 
 import de.malkusch.ha.notification.model.Notification;
 
+@DisabledIfEnvironmentVariable(named = "GITHUB_EVENT_NAME", matches = "pull_request")
 public class TelegramNotificationServiceIT {
 
     private final String chatId = System.getenv("TELEGRAM_CHAT_ID");
@@ -27,7 +29,7 @@ public class TelegramNotificationServiceIT {
 
     @BeforeEach
     public void setup() {
-        assumeTrue(isNoneBlank(token, chatId));
+        assertTrue(isNoneBlank(token, chatId));
 
         var api = new TelegramBot(token);
         service = new TelegramNotificationService(api, chatId);
