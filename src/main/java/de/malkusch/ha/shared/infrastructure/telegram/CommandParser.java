@@ -53,6 +53,10 @@ public interface CommandParser<T extends Command> {
             this.help = help;
             return this;
         }
+        
+        public Builder<T> help(String command, String description) {
+            return help(new CommandHelp(command, description));
+        }
 
         @FunctionalInterface
         public interface PartialParser<T extends Command, M extends Message> {

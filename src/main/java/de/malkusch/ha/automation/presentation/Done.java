@@ -9,7 +9,6 @@ import de.malkusch.ha.automation.presentation.Done.CheckNext;
 import de.malkusch.ha.shared.infrastructure.telegram.Command;
 import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
 import de.malkusch.ha.shared.infrastructure.telegram.CommandParser;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandParser.CommandHelp;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -24,7 +23,7 @@ public final class Done extends CommandHandler<CheckNext> {
     @Override
     public CommandParser<CheckNext> parser() {
         return new CommandParser.Builder<CheckNext>() //
-                .help(new CommandHelp("done", "Markiert die nächste Müllabfuhr als erledigt")) //
+                .help("done", "Markiert die nächste Müllabfuhr als erledigt") //
                 .andTextMatchesHelp(it -> new CheckNext()) //
                 .andReactionParser(THUMBS_UP, m -> new CheckNext()) //
                 .build();
