@@ -1,5 +1,7 @@
 package de.malkusch.ha.notification.infrastructure.telegram;
 
+import static org.apache.commons.lang3.StringUtils.isAnyBlank;
+
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -29,7 +31,7 @@ class TelegramConfiguration {
 
     @Bean
     NotificationService notificationService() {
-        if (properties.chatId == null || properties.token == null) {
+        if (isAnyBlank(properties.chatId, properties.token)) {
             log.warn("Telegram chatId or token are empty, falling back to logging notifications");
             return new LoggingNotificationService();
         }
