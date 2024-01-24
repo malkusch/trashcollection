@@ -1,4 +1,4 @@
-package de.malkusch.ha.notification.infrastructure.telegram;
+package de.malkusch.ha.shared.infrastructure.telegram;
 
 import static java.util.UUID.randomUUID;
 import static org.apache.commons.lang3.StringUtils.isNoneBlank;
@@ -17,41 +17,40 @@ import com.pengrad.telegrambot.request.GetChat;
 import com.pengrad.telegrambot.request.PinChatMessage;
 import com.pengrad.telegrambot.request.UnpinChatMessage;
 
-import de.malkusch.ha.notification.model.Notification;
 import de.malkusch.ha.test.DisabledIfPR;
 
 @DisabledIfPR
-public class TelegramNotificationServiceIT {
+public class TelegramApiIT {
 
     private final String chatId = System.getenv("TELEGRAM_CHAT_ID");
     private final String token = System.getenv("TELEGRAM_TOKEN");
-    private TelegramNotificationService service;
+    private TelegramApi api;
 
     @BeforeEach
     public void setup() {
         assertTrue(isNoneBlank(token, chatId));
 
         var timeout = Duration.ofSeconds(10);
-        service = new TelegramNotificationService(chatId, token, timeout);
+        api = new TelegramApi(chatId, token, timeout);
     }
 
     @Test
     public void shouldSendMessage() {
         var message = String.format("Test %s %s", LocalDateTime.now(), randomUUID());
 
-        service.send(new Notification(message));
+        api.send(message);
 
-        var lastMessage = service.lastMessage();
+        var lastMessage = api.lastMessage();
         assertEquals(message, lastMessage.text());
         assertEquals(message, fetchMessage(lastMessage.messageId()));
         delete(lastMessage);
     }
 
     private String fetchMessage(int messageId) {
-        service.execute(new PinChatMessage(chatId, messageId));
+        api.execute(new PinChatMessage(chatId, messageId));
         try {
             var request = new GetChat(chatId);
-            var response = service.execute(request);
+            var response = api.execute(request);
             if (response.chat().pinnedMessage() == null) {
                 return null;
             }
@@ -59,12 +58,12 @@ public class TelegramNotificationServiceIT {
             return lastMessage;
 
         } finally {
-            service.execute(new UnpinChatMessage(chatId).messageId(messageId));
+            api.execute(new UnpinChatMessage(chatId).messageId(messageId));
         }
     }
 
     private void delete(Message message) {
         var request = new DeleteMessage(chatId, message.messageId());
-        service.execute(request);
+        api.execute(request);
     }
 }

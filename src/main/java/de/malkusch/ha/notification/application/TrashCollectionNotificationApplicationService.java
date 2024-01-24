@@ -8,6 +8,8 @@ import java.util.Arrays;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 
+import de.malkusch.ha.automation.application.ListNextCollectionsApplicationService.NextCollectionsListed;
+import de.malkusch.ha.automation.application.PrintNextCollectionApplicationService.NextCollectionPrinted;
 import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayNoticed;
 import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
 import de.malkusch.ha.automation.model.TrashCollection;
@@ -37,6 +39,29 @@ public final class TrashCollectionNotificationApplicationService {
                 trashCans(event.nextCollection));
         var notification = new Notification(message);
         notificationService.send(notification);
+    }
+
+    @EventListener
+    public void onList(NextCollectionsListed event) {
+        var message = event.next().stream() //
+                .map(it -> trashCollection(it)) //
+                .reduce((a, b) -> a + "\n" + b) //
+                .orElse("keine Müllabfuhr");
+        var notification = new Notification(message);
+        notificationService.send(notification);
+    }
+
+    @EventListener
+    public void onNext(NextCollectionPrinted event) {
+        var message = trashCollection(event.next());
+        var notification = new Notification(message);
+        notificationService.send(notification);
+    }
+
+    private static String trashCollection(TrashCollection trashCollection) {
+        return String.format("%s:\t%s", //
+                date(trashCollection), //
+                trashCans(trashCollection));
     }
 
     private static String trashCans(TrashCollection trashCollection) {

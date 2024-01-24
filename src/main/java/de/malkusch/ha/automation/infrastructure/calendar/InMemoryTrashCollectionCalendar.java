@@ -57,6 +57,13 @@ final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, 
     }
 
     @Override
+    public Stream<TrashCollection> findNextTrashCollectionsAfter(LocalDate after) {
+        return collections.stream() //
+                .filter(it -> it.date().isAfter(after)) //
+                .sorted(SORT_BY_DATE);
+    }
+
+    @Override
     public Stream<TrashCollection> findAll() {
         return collections.stream();
     }

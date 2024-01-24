@@ -1,19 +1,17 @@
-package de.malkusch.ha.notification.infrastructure.telegram;
+package de.malkusch.ha.shared.infrastructure.telegram;
 
-import static org.apache.commons.lang3.StringUtils.isAnyBlank;
+import java.util.Collection;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
-import de.malkusch.ha.notification.model.NotificationService;
+import de.malkusch.ha.automation.presentation.Help;
 import de.malkusch.ha.shared.infrastructure.http.HttpConfiguration.HttpProperties;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 
-@Slf4j
 @Configuration
 @RequiredArgsConstructor
 class TelegramConfiguration {
@@ -30,11 +28,12 @@ class TelegramConfiguration {
     private final HttpProperties httpProperties;
 
     @Bean
-    NotificationService notificationService() {
-        if (isAnyBlank(properties.chatId, properties.token)) {
-            log.warn("Telegram chatId or token are empty, falling back to logging notifications");
-            return new LoggingNotificationService();
-        }
-        return new TelegramNotificationService(properties.chatId, properties.token, httpProperties.getTimeout());
+    TelegramApi telegram() {
+        return new TelegramApi(properties.chatId, properties.token, httpProperties.getTimeout());
+    }
+
+    @Bean
+    CommandDispatcher dispatcher(Collection<CommandHandler<?>> handlers, Help help) {
+        return new CommandDispatcher(telegram(), handlers, help);
     }
 }

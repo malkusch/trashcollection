@@ -9,4 +9,6 @@ public interface TrashCollectionCalendar {
 
     Stream<TrashCollection> findAll();
 
+    Stream<TrashCollection> findNextTrashCollectionsAfter(LocalDate after);
+
 }
