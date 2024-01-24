@@ -1,58 +1,19 @@
 package de.malkusch.ha.shared.infrastructure.telegram;
 
-import java.util.function.Function;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandParser.Message;
 
 public abstract class CommandHandler<T extends Command> {
 
-    public interface Parser<T extends Command> {
-        abstract public T parse(String command);
+    abstract public CommandParser<T> parser();
 
-        public record CommandHelp(String command, String description) {
+    abstract public void handle(T command);
 
-            @Override
-            public String toString() {
-                if (description == null) {
-                    return command;
-                }
-                return String.format("%s - %s", command, description);
-            }
-        }
-
-        abstract public CommandHelp help();
-
-        public static <T extends Command> Parser<T> noArgumentCommand(CommandHelp help, Function<String, T> factory) {
-            var command = help.command;
-            class SingleArgumentParser implements Parser<T> {
-
-                @Override
-                public T parse(String commandString) {
-                    if (command.equals(commandString)) {
-                        return factory.apply(commandString);
-                    }
-                    return null;
-                }
-
-                @Override
-                public CommandHelp help() {
-                    return help;
-                }
-            }
-
-            return new SingleArgumentParser();
-        }
-
-    }
-
-    abstract public Parser<T> parser();
-
-    abstract public void onCommand(T command);
-
-    final boolean parseAndHandle(String command) {
+    final boolean parseAndHandle(Message command) {
         var parsed = parser().parse(command);
         if (parsed == null) {
             return false;
         }
-        onCommand(parsed);
+        handle(parsed);
         return true;
     }
 }

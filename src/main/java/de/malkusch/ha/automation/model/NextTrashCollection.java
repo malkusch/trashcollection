@@ -24,6 +24,26 @@ public class NextTrashCollection {
         log.info("Next trash collection: {}", next);
     }
 
+    public void done() {
+        var tomorrow = LocalDate.now().plusDays(1);
+        if (next.date().isAfter(tomorrow)) {
+            log.warn("Next is too far in the future: {}", next);
+            return;
+        }
+        done(calendar.findNextTrashCollectionAfter(next.date()));
+    }
+
+    private void done(TrashCollection changed) {
+        if (changed.equals(next)) {
+            return;
+        }
+        if (changed.date().isBefore(next.date())) {
+            throw new IllegalArgumentException(String.format("%s is before %s", changed, next));
+        }
+        next = changed;
+        publish(new NextTrashCollectionChanged(changed));
+    }
+
     public void checkNextChanged() {
         log.debug("Checking if next changed");
         var changedNext = calendar.findNextTrashCollectionAfter(LocalDate.now());
@@ -32,8 +52,7 @@ public class NextTrashCollection {
         }
 
         log.info("Next trash collection changed from {} to {}", next, changedNext);
-        this.next = changedNext;
-        publish(new NextTrashCollectionChanged(changedNext));
+        done(changedNext);
     }
 
     public TrashCollection nextTrashCollection() {

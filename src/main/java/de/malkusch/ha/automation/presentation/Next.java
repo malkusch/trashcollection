@@ -1,6 +1,6 @@
 package de.malkusch.ha.automation.presentation;
 
-import static de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.noArgumentCommand;
+import static de.malkusch.ha.shared.infrastructure.telegram.CommandParser.noArgumentCommand;
 
 import org.springframework.stereotype.Service;
 
@@ -8,7 +8,8 @@ import de.malkusch.ha.automation.application.PrintNextCollectionApplicationServi
 import de.malkusch.ha.automation.presentation.Next.PrintNext;
 import de.malkusch.ha.shared.infrastructure.telegram.Command;
 import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandParser;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandParser.CommandHelp;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -21,12 +22,12 @@ public final class Next extends CommandHandler<PrintNext> {
     }
 
     @Override
-    public Parser<PrintNext> parser() {
+    public CommandParser<PrintNext> parser() {
         return noArgumentCommand(new CommandHelp("next", "Zeigt die nächste Müllabfuhr"), it -> new PrintNext());
     }
 
     @Override
-    public void onCommand(PrintNext command) {
+    public void handle(PrintNext command) {
         service.printNext();
     }
 }

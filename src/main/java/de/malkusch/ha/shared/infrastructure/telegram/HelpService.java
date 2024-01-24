@@ -10,7 +10,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.shared.infrastructure.event.Event;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandParser.CommandHelp;
 import lombok.RequiredArgsConstructor;
 
 @Service
