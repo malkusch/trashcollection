@@ -8,6 +8,7 @@ import de.malkusch.ha.automation.application.PrintNextCollectionApplicationServi
 import de.malkusch.ha.automation.presentation.Next.PrintNext;
 import de.malkusch.ha.shared.infrastructure.telegram.Command;
 import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -21,7 +22,7 @@ public final class Next extends CommandHandler<PrintNext> {
 
     @Override
     public Parser<PrintNext> parser() {
-        return noArgumentCommand("next", it -> new PrintNext());
+        return noArgumentCommand(new CommandHelp("next", "Zeigt die nächste Müllabfuhr"), it -> new PrintNext());
     }
 
     @Override

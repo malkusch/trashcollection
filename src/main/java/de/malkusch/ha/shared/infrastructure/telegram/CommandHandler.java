@@ -7,9 +7,21 @@ public abstract class CommandHandler<T extends Command> {
     public interface Parser<T extends Command> {
         abstract public T parse(String command);
 
-        abstract public String help();
+        public record CommandHelp(String command, String description) {
 
-        public static <T extends Command> Parser<T> noArgumentCommand(String command, Function<String, T> factory) {
+            @Override
+            public String toString() {
+                if (description == null) {
+                    return command;
+                }
+                return String.format("%s - %s", command, description);
+            }
+        }
+
+        abstract public CommandHelp help();
+
+        public static <T extends Command> Parser<T> noArgumentCommand(CommandHelp help, Function<String, T> factory) {
+            var command = help.command;
             class SingleArgumentParser implements Parser<T> {
 
                 @Override
@@ -21,8 +33,8 @@ public abstract class CommandHandler<T extends Command> {
                 }
 
                 @Override
-                public String help() {
-                    return command;
+                public CommandHelp help() {
+                    return help;
                 }
             }
 

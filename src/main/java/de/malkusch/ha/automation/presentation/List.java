@@ -8,6 +8,7 @@ import de.malkusch.ha.automation.application.ListNextCollectionsApplicationServi
 import de.malkusch.ha.automation.presentation.List.ListNextCollections;
 import de.malkusch.ha.shared.infrastructure.telegram.Command;
 import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -21,7 +22,7 @@ public final class List extends CommandHandler<ListNextCollections> {
 
     @Override
     public Parser<ListNextCollections> parser() {
-        return noArgumentCommand("list", it -> new ListNextCollections());
+        return noArgumentCommand(new CommandHelp("list", "Zeigt die nächsten Müllabfuhren"), it -> new ListNextCollections());
     }
 
     @Override

@@ -10,6 +10,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.shared.infrastructure.event.Event;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -19,8 +20,7 @@ public class HelpService {
 
     private final Collection<CommandHandler<?>> handlers;
 
-    public record HelpPrinted(List<String> commands) implements Event {
-
+    public record HelpPrinted(List<CommandHelp> commands) implements Event {
     }
 
     public void printHelp() {

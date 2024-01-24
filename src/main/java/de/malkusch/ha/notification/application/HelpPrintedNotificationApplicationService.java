@@ -17,6 +17,7 @@ public final class HelpPrintedNotificationApplicationService {
     @EventListener
     public void onHelp(HelpPrinted event) {
         var message = event.commands().stream() //
+                .map(it -> it.toString()) //
                 .reduce((a, b) -> a + "\n" + b) //
                 .orElseThrow();
         var notification = new Notification(message);

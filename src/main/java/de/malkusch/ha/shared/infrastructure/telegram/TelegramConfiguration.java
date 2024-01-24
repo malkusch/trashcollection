@@ -2,6 +2,7 @@ package de.malkusch.ha.shared.infrastructure.telegram;
 
 import java.util.Collection;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
+@ConditionalOnProperty({ "notification.telegram.token", "notification.telegram.chatId" })
 class TelegramConfiguration {
 
     @Data

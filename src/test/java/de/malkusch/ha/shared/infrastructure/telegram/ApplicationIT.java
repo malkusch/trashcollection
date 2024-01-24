@@ -1,4 +1,4 @@
-package de.malkusch.ha.notification.infrastructure.telegram;
+package de.malkusch.ha.shared.infrastructure.telegram;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

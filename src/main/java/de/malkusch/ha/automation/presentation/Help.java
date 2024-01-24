@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import de.malkusch.ha.automation.presentation.Help.PrintHelp;
 import de.malkusch.ha.shared.infrastructure.telegram.Command;
 import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
 import de.malkusch.ha.shared.infrastructure.telegram.HelpService;
 import lombok.RequiredArgsConstructor;
 
@@ -21,7 +22,7 @@ public final class Help extends CommandHandler<PrintHelp> {
 
     @Override
     public Parser<PrintHelp> parser() {
-        return noArgumentCommand("help", it -> new PrintHelp());
+        return noArgumentCommand(new CommandHelp("help", "Listed alle Befehle auf"), it -> new PrintHelp());
     }
 
     @Override

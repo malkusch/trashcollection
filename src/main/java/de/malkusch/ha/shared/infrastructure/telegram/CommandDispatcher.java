@@ -11,6 +11,7 @@ import com.pengrad.telegrambot.model.Update;
 
 import de.malkusch.ha.automation.presentation.Help;
 import de.malkusch.ha.shared.infrastructure.event.Event;
+import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler.Parser.CommandHelp;
 
 public final class CommandDispatcher implements AutoCloseable {
 
@@ -35,7 +36,7 @@ public final class CommandDispatcher implements AutoCloseable {
                 .orElse(CONFIRMED_UPDATES_ALL);
     }
 
-    public record UnkownCommandReceived(String command, String help) implements Event {
+    public record UnkownCommandReceived(String command, CommandHelp help) implements Event {
 
     }
 
