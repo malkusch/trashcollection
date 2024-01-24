@@ -12,9 +12,7 @@ import java.io.IOException;
 import java.net.URI;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.Clock;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.TimeZone;
 import java.util.function.Function;
 import java.util.stream.Stream;
@@ -28,6 +26,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.shared.infrastructure.http.HttpClient;
 import de.malkusch.ha.shared.infrastructure.http.HttpResponse;
+import de.malkusch.ha.test.MockedClock;
 
 public class InMemoryTrashCollectionCalendarTest {
 
@@ -35,7 +34,7 @@ public class InMemoryTrashCollectionCalendarTest {
     private static final Path CALENDAR_FILE = Paths.get("/tmp/trash-calendar-test");
 
     private final HttpClient http = mock(HttpClient.class);
-    private final Clock clock = mock(Clock.class);
+    private final MockedClock mockedClock = new MockedClock();
 
     private static record Scenario(LocalDate now, TimeZone system, TrashCollection expected) {
     }
@@ -157,7 +156,7 @@ public class InMemoryTrashCollectionCalendarTest {
             var calendar = calendar("2023-01-01");
             var last2023 = calendar.findNextTrashCollectionAfter(LocalDate.parse("2023-12-20"));
 
-            mockDate(updateDate);
+            mockedClock.mockDate(updateDate);
             calendar.update();
             var next = calendar.findNextTrashCollectionAfter(last2023.date());
 
@@ -181,24 +180,14 @@ public class InMemoryTrashCollectionCalendarTest {
     private InMemoryTrashCollectionCalendar calendar(LocalDate now) {
         try {
             mockHttpCalendar();
-            mockDate(now);
+            mockedClock.mockDate(now);
 
             var properties = new CalendarConfiguration.CalendarProperties(CALENDAR_FILE.toString(), URL_TEMPLATE);
-            return CalendarConfiguration.calendar(clock, http, properties);
+            return CalendarConfiguration.calendar(mockedClock.clock, http, properties);
 
         } catch (Exception e) {
             throw new IllegalStateException(e);
         }
-    }
-
-    private void mockDate(String date) {
-        mockDate(LocalDate.parse(date));
-    }
-
-    private void mockDate(LocalDate date) {
-        var instant = date.atStartOfDay(ZoneId.systemDefault()).toInstant();
-        when(clock.instant()).thenReturn(instant);
-        when(clock.getZone()).thenReturn(ZoneId.systemDefault());
     }
 
     private void mockHttpCalendar() {

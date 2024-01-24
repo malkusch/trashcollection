@@ -2,6 +2,7 @@ package de.malkusch.ha.automation.model;
 
 import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
 
+import java.time.Clock;
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
@@ -15,17 +16,19 @@ import lombok.extern.slf4j.Slf4j;
 public class NextTrashCollection {
 
     private final TrashCollectionCalendar calendar;
+    private final Clock clock;
     private volatile TrashCollection next;
 
-    NextTrashCollection(TrashCollectionCalendar calendar) {
+    NextTrashCollection(TrashCollectionCalendar calendar, Clock clock) {
         this.calendar = calendar;
+        this.clock = clock;
 
-        this.next = calendar.findNextTrashCollectionAfter(LocalDate.now());
+        this.next = calendar.findNextTrashCollectionAfter(LocalDate.now(clock));
         log.info("Next trash collection: {}", next);
     }
 
     public void done() {
-        var tomorrow = LocalDate.now().plusDays(1);
+        var tomorrow = LocalDate.now(clock).plusDays(1);
         if (next.date().isAfter(tomorrow)) {
             log.warn("Next is too far in the future: {}", next);
             return;
@@ -46,7 +49,7 @@ public class NextTrashCollection {
 
     public void checkNextChanged() {
         log.debug("Checking if next changed");
-        var changedNext = calendar.findNextTrashCollectionAfter(LocalDate.now());
+        var changedNext = calendar.findNextTrashCollectionAfter(LocalDate.now(clock));
         if (changedNext.equals(this.next)) {
             return;
         }
