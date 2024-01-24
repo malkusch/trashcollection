@@ -1,5 +1,7 @@
 package de.malkusch.ha.notification.infrastructure.telegram;
 
+import java.time.Duration;
+
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.request.BaseRequest;
@@ -8,10 +10,26 @@ import com.pengrad.telegrambot.response.BaseResponse;
 
 import de.malkusch.ha.notification.model.Notification;
 import de.malkusch.ha.notification.model.NotificationService;
-import lombok.RequiredArgsConstructor;
+import okhttp3.OkHttpClient;
 
-@RequiredArgsConstructor
-final class TelegramNotificationService implements NotificationService {
+final class TelegramNotificationService implements NotificationService, AutoCloseable {
+
+    public TelegramNotificationService(String chatId, String token, Duration timeout) {
+        this.api = buildApi(token, timeout);
+        this.chatId = chatId;
+    }
+
+    private static TelegramBot buildApi(String token, Duration timeout) {
+        var http = new OkHttpClient.Builder() //
+                .connectTimeout(timeout) //
+                .writeTimeout(timeout) //
+                .readTimeout(timeout) //
+                .build();
+
+        return new TelegramBot.Builder(token) //
+                .okHttpClient(http) //
+                .build();
+    }
 
     private final TelegramBot api;
     private final String chatId;
@@ -42,5 +60,10 @@ final class TelegramNotificationService implements NotificationService {
             throw new RuntimeException(error);
         }
         return response;
+    }
+
+    @Override
+    public void close() throws Exception {
+        api.shutdown();
     }
 }

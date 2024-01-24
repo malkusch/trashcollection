@@ -5,13 +5,13 @@ import static org.apache.commons.lang3.StringUtils.isNoneBlank;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.time.Duration;
 import java.time.LocalDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.DisabledIfEnvironmentVariable;
 
-import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.request.DeleteMessage;
 import com.pengrad.telegrambot.request.GetChat;
@@ -31,8 +31,8 @@ public class TelegramNotificationServiceIT {
     public void setup() {
         assertTrue(isNoneBlank(token, chatId));
 
-        var api = new TelegramBot(token);
-        service = new TelegramNotificationService(api, chatId);
+        var timeout = Duration.ofSeconds(10);
+        service = new TelegramNotificationService(chatId, token, timeout);
     }
 
     @Test
@@ -43,11 +43,11 @@ public class TelegramNotificationServiceIT {
 
         var lastMessage = service.lastMessage();
         assertEquals(message, lastMessage.text());
-        assertEquals(message, fetchLastMessage(lastMessage.messageId()));
+        assertEquals(message, fetchMessage(lastMessage.messageId()));
         delete(lastMessage);
     }
 
-    private String fetchLastMessage(int messageId) {
+    private String fetchMessage(int messageId) {
         service.execute(new PinChatMessage(chatId, messageId));
         try {
             var request = new GetChat(chatId);
