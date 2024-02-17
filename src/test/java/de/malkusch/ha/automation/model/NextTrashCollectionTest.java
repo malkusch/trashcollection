@@ -4,10 +4,13 @@ import static de.malkusch.ha.shared.infrastructure.event.EventPublisherTests.ign
 import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import de.malkusch.ha.automation.model.NextTrashCollection.NotNextException;
+import de.malkusch.ha.automation.model.NextTrashCollection.TooFarInFutureException;
 import de.malkusch.ha.test.CalenderTests;
 import de.malkusch.ha.test.MockedClock;
 import de.malkusch.ha.test.TestCalendar;
@@ -39,6 +42,23 @@ public class NextTrashCollectionTest {
 
     @ParameterizedTest
     @CsvSource({ //
+            "2023-01-01, 2023-01-02/PP, 2023-01-05/RO", //
+            "2023-01-04, 2023-01-05/RO, 2023-01-19/RO", //
+            "2023-01-18, 2023-01-19/RO, 2023-01-30/PP", //
+    })
+    public void doneShouldChangeGivenNext(String now, String trashcollection, String expected) throws Exception {
+        var next = nextTrashCollection(now);
+        var beforeDone = next.nextTrashCollection();
+
+        next.done(trashCollection(trashcollection));
+
+        var afterDone = next.nextTrashCollection();
+        assertNotEquals(beforeDone, afterDone);
+        assertEquals(trashCollection(expected), afterDone);
+    }
+
+    @ParameterizedTest
+    @CsvSource({ //
             "2023-01-02, 2023-01-02, 2023-01-05/RO", //
             "2023-01-02, 2023-01-03, 2023-01-05/RO", //
             "2023-01-03, 2023-01-03, 2023-01-05/RO", //
@@ -57,11 +77,56 @@ public class NextTrashCollectionTest {
         var beforeDone = next.nextTrashCollection();
 
         mockedClock.mockDate(later);
-        next.done();
+        assertThrows(TooFarInFutureException.class, next::done);
 
         var afterDone = next.nextTrashCollection();
         assertEquals(beforeDone, afterDone);
         assertEquals(trashCollection(expected), afterDone);
+    }
+
+    @ParameterizedTest
+    @CsvSource({ //
+            "2023-01-02, 2023-01-05/RO", //
+            "2023-01-02, 2023-01-05/RO", //
+            "2023-01-03, 2023-01-05/RO", //
+
+            "2023-01-05, 2023-01-19/RO", //
+            "2023-01-05, 2023-01-19/RO", //
+            "2023-01-05, 2023-01-19/RO", //
+
+            "2023-01-06, 2023-01-19/RO", //
+            "2023-01-06, 2023-01-19/RO", //
+
+            "2023-01-17, 2023-01-19/RO", //
+    })
+    public void doneShouldNotChangeWhenTooFarInFuture(String now, String trashcollection) throws Exception {
+        var next = nextTrashCollection(now);
+        var beforeDone = next.nextTrashCollection();
+
+        assertThrows(TooFarInFutureException.class, () -> next.done(trashCollection(trashcollection)));
+
+        var afterDone = next.nextTrashCollection();
+        assertEquals(beforeDone, afterDone);
+        assertEquals(trashCollection(trashcollection), beforeDone);
+    }
+
+    @ParameterizedTest
+    @CsvSource({ //
+            "2023-01-05, 2023-01-05/RO", //
+            "2023-01-06, 2023-01-05/RO", //
+            "2023-01-18, 2023-01-05/RO", //
+
+            "2023-03-01, 2023-01-19/RO", //
+            "2023-03-01, 2023-01-05/RO", //
+    })
+    public void doneShouldNotChangeWhenNotNext(String now, String trashcollection) throws Exception {
+        var next = nextTrashCollection(now);
+        var beforeDone = next.nextTrashCollection();
+
+        assertThrows(NotNextException.class, () -> next.done(trashCollection(trashcollection)));
+
+        var afterDone = next.nextTrashCollection();
+        assertEquals(beforeDone, afterDone);
     }
 
     @ParameterizedTest
