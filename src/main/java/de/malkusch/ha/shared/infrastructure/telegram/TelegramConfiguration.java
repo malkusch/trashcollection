@@ -1,5 +1,7 @@
 package de.malkusch.ha.shared.infrastructure.telegram;
 
+import java.time.Duration;
+
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -22,6 +24,7 @@ public class TelegramConfiguration {
     static class TelegramProperties {
         private String token;
         private String chatId;
+        private Duration polling;
     }
 
     private final TelegramProperties properties;
@@ -29,6 +32,7 @@ public class TelegramConfiguration {
 
     @Bean
     TelegramApi telegram() {
-        return new TelegramApi(properties.chatId, properties.token, httpProperties.getTimeout());
+        var timeouts = new TelegramApi.Timeouts(httpProperties.getTimeout(), properties.polling);
+        return new TelegramApi(properties.chatId, properties.token, timeouts);
     }
 }
