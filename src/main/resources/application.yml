@@ -8,3 +8,7 @@ http:
 calendar:
    cache: /tmp/trash-calendar
    update: 59 39 */6 * * *
+notification:
+   telegram:
+      polling: PT5M
+      

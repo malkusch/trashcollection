@@ -1,46 +1,44 @@
 package de.malkusch.ha.notification.infrastructure.telegram;
 
-import com.pengrad.telegrambot.TelegramBot;
-import com.pengrad.telegrambot.model.Message;
-import com.pengrad.telegrambot.request.BaseRequest;
-import com.pengrad.telegrambot.request.SendMessage;
-import com.pengrad.telegrambot.response.BaseResponse;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import de.malkusch.ha.notification.model.Notification;
+import de.malkusch.ha.notification.model.Notification.CallbackNotification;
+import de.malkusch.ha.notification.model.Notification.TextNotification;
 import de.malkusch.ha.notification.model.NotificationService;
+import de.malkusch.telgrambot.TelegramApi;
 import lombok.RequiredArgsConstructor;
+import de.malkusch.telgrambot.Handler.CallbackHandler.Result;
+import de.malkusch.telgrambot.Message.CallbackMessage.Callback;
+import de.malkusch.telgrambot.TelegramApi.Button;
+import de.malkusch.telgrambot.Command;
 
 @RequiredArgsConstructor
 final class TelegramNotificationService implements NotificationService {
 
-    private final TelegramBot api;
-    private final String chatId;
+    private final TelegramApi telegram;
 
     @Override
     public void send(Notification notification) {
-        var request = new SendMessage(chatId, notification.toString());
-        var response = execute(request);
-        if (response.message() == null) {
-            lastMessage = NO_MESSAGE;
-            throw new RuntimeException("Sending to Telegram failed: empty message");
+        if (notification instanceof TextNotification text) {
+            send(text);
+
+        } else if (notification instanceof CallbackNotification callback) {
+            send(callback);
+
+        } else {
+            telegram.send(notification.toString());
         }
-        lastMessage = response.message();
     }
 
-    private final static Message NO_MESSAGE = new Message();
-    private volatile Message lastMessage = NO_MESSAGE;
-
-    Message lastMessage() {
-        return lastMessage;
+    private void send(TextNotification notification) {
+        telegram.send(notification.toString());
     }
 
-    <T extends BaseRequest<T, R>, R extends BaseResponse> R execute(BaseRequest<T, R> request) {
-        var response = api.execute(request);
-        if (!response.isOk()) {
-            lastMessage = NO_MESSAGE;
-            var error = String.format("Sending to Telegram failed: %d", response.errorCode());
-            throw new RuntimeException(error);
-        }
-        return response;
+    private void send(CallbackNotification notification) {
+        var payload = notification.callback().payload();
+        var done = new Command("done");  //XXX
+        var button = new Button(notification.callback().name(),  new Callback(done, payload));
+        telegram.send(notification.message(), button);
     }
 }

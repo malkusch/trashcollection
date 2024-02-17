@@ -10,6 +10,10 @@ public final class EventPublisher {
     static volatile ApplicationEventPublisher publisher;
 
     public static void publish(Event event) {
+        if (publisher == null) {
+            log.warn("Unhandled event due to uninitialized even publisher: {}", event);
+            return;
+        }
         publisher.publishEvent(event);
     }
 

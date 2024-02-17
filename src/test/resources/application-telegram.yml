@@ -1,0 +1,4 @@
+notification:
+   telegram:
+     token: ${TELEGRAM_TOKEN:invalid}
+     chatId: ${TELEGRAM_CHAT_ID:invalid}
