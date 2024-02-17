@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 @RequiredArgsConstructor
 @ConditionalOnProperty({ "notification.telegram.token", "notification.telegram.chatId" })
-class TelegramConfiguration {
+public class TelegramConfiguration {
 
     @Data
     @Component

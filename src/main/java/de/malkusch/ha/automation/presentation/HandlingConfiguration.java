@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.context.annotation.Configuration;
 
+import de.malkusch.ha.shared.infrastructure.telegram.TelegramConfiguration;
 import de.malkusch.telgrambot.Handler;
 import de.malkusch.telgrambot.TelegramApi;
 import jakarta.annotation.PostConstruct;
@@ -12,7 +13,7 @@ import lombok.RequiredArgsConstructor;
 
 @Configuration
 @RequiredArgsConstructor
-@ConditionalOnBean(TelegramApi.class)
+@ConditionalOnBean(TelegramConfiguration.class)
 public class HandlingConfiguration {
 
     private final List list;
