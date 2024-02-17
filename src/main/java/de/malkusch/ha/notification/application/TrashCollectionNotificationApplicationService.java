@@ -38,9 +38,9 @@ public final class TrashCollectionNotificationApplicationService {
     @EventListener
     public void onTrashDay(TomorrowsTrashDayNoticed event) {
         var message = String.format("Morgen (%s) kommt die Müllabfuhr: %s", //
-                date(event.nextCollection), //
-                trashCans(event.nextCollection));
-        var done = done(event.nextCollection);
+                date(event.nextCollection()), //
+                trashCans(event.nextCollection()));
+        var done = done(event.nextCollection());
         var notification = new CallbackNotification(message, done);
         notificationService.send(notification);
     }

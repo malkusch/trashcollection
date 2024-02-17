@@ -1,19 +1,17 @@
 package de.malkusch.ha.automation.model;
 
-import static de.malkusch.ha.shared.infrastructure.event.EventPublisherTests.ignoreEvents;
 import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
 import de.malkusch.ha.automation.model.NextTrashCollection.NotNextException;
 import de.malkusch.ha.automation.model.NextTrashCollection.TooFarInFutureException;
-import de.malkusch.ha.test.CalenderTests;
 import de.malkusch.ha.test.MockedClock;
-import de.malkusch.ha.test.TestCalendar;
 
 public class NextTrashCollectionTest {
 
@@ -185,11 +183,10 @@ public class NextTrashCollectionTest {
         assertEquals(trashCollection(expected), after);
     }
 
+    @RegisterExtension
+    private final NextTrashCollectionTests nextTrashCollectionTests = new NextTrashCollectionTests(mockedClock);
+
     private NextTrashCollection nextTrashCollection(String now) {
-        mockedClock.mockDate(now);
-        ignoreEvents();
-        var calendar = CalenderTests.calendar(TestCalendar.CALENDAR_2023);
-        var next = new NextTrashCollection(calendar, mockedClock.clock);
-        return next;
+        return nextTrashCollectionTests.nextTrashCollection(now);
     }
 }
