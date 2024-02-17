@@ -1,36 +1,39 @@
 package de.malkusch.ha.automation.presentation;
 
-import static de.malkusch.ha.shared.infrastructure.telegram.CommandParser.ReactionMessage.Reaction.THUMBS_UP;
-
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.application.DoneNextCollectionApplicationService;
-import de.malkusch.ha.automation.presentation.Done.CheckNext;
-import de.malkusch.ha.shared.infrastructure.telegram.Command;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandParser;
+import de.malkusch.ha.automation.model.NextTrashCollection.NotNextException;
+import de.malkusch.ha.automation.model.NextTrashCollection.TooFarInFutureException;
+import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
+import de.malkusch.telgrambot.Command;
+import de.malkusch.telgrambot.Handler.CallbackHandler.Handling;
+import de.malkusch.telgrambot.Handler.CallbackHandler.Result;
+import de.malkusch.telgrambot.Message.CallbackMessage;
+import de.malkusch.telgrambot.TelegramApi;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public final class Done extends CommandHandler<CheckNext> {
+public final class Done implements Handling {
+
+    public static final Command COMMAND = new Command("done");
 
     private final DoneNextCollectionApplicationService service;
-
-    public record CheckNext() implements Command {
-    }
+    private final TrashCollectionFormatter trashCollectionFormatter;
 
     @Override
-    public CommandParser<CheckNext> parser() {
-        return new CommandParser.Builder<CheckNext>() //
-                .help("done", "Markiert die nächste Müllabfuhr als erledigt") //
-                .andTextMatchesHelp(it -> new CheckNext()) //
-                .andReactionParser(THUMBS_UP, m -> new CheckNext()) //
-                .build();
-    }
+    public Result handle(TelegramApi api, CallbackMessage message) {
+        try {
+            var trashCollection = trashCollectionFormatter.parse(message.callback().data());
+            service.done(trashCollection);
+            return new Result(true);
 
-    @Override
-    public void handle(CheckNext command) {
-        service.done();
+        } catch (TooFarInFutureException e) {
+            return new Result(false, "Zu früh zum erledigen");
+
+        } catch (NotNextException e) {
+            return new Result(true);
+        }
     }
 }

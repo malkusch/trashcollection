@@ -27,16 +27,37 @@ public class NextTrashCollection {
         log.info("Next trash collection: {}", next);
     }
 
-    public void done() {
-        var tomorrow = LocalDate.now(clock).plusDays(1);
-        if (next.date().isAfter(tomorrow)) {
-            log.warn("Next is too far in the future: {}", next);
-            return;
-        }
-        done(calendar.findNextTrashCollectionAfter(next.date()));
+    public static class TooFarInFutureException extends Exception {
+
     }
 
-    private void done(TrashCollection changed) {
+    public static class NotNextException extends Exception {
+
+    }
+
+    public void done() throws TooFarInFutureException {
+        try {
+            done(next);
+
+        } catch (NotNextException e) {
+            throw new IllegalStateException(e);
+        }
+    }
+
+    public void done(TrashCollection doneCollection) throws TooFarInFutureException, NotNextException {
+        if (!doneCollection.equals(next)) {
+            throw new NotNextException();
+        }
+
+        var tomorrow = LocalDate.now(clock).plusDays(1);
+        if (doneCollection.date().isAfter(tomorrow)) {
+            throw new TooFarInFutureException();
+        }
+
+        change(calendar.findNextTrashCollectionAfter(doneCollection.date()));
+    }
+
+    private void change(TrashCollection changed) {
         if (changed.equals(next)) {
             return;
         }
@@ -55,7 +76,7 @@ public class NextTrashCollection {
         }
 
         log.info("Next trash collection changed from {} to {}", next, changedNext);
-        done(changedNext);
+        change(changedNext);
     }
 
     public TrashCollection nextTrashCollection() {

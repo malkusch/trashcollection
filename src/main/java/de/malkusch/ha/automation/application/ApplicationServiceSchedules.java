@@ -40,7 +40,7 @@ public class ApplicationServiceSchedules {
 
         private final CheckTrashDayService checker;
 
-        @Scheduled(cron = "59 59 5/6 * * *")
+        @Scheduled(cron = "59 59 5,12,15,17,20,21,22,23 * * *")
         public void checkTrashDay() {
             try {
                 checker.checkTomorrow();

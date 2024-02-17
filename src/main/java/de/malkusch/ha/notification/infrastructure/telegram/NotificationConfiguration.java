@@ -6,11 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 import de.malkusch.ha.notification.model.NotificationService;
-import de.malkusch.ha.shared.infrastructure.telegram.TelegramApi;
-import lombok.RequiredArgsConstructor;
+import de.malkusch.telgrambot.TelegramApi;
 
 @Configuration
-@RequiredArgsConstructor
 class NotificationConfiguration {
 
     @Bean

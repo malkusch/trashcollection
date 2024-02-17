@@ -13,8 +13,11 @@ import de.malkusch.ha.automation.application.PrintNextCollectionApplicationServi
 import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayNoticed;
 import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
 import de.malkusch.ha.automation.model.TrashCollection;
-import de.malkusch.ha.notification.model.Notification;
+import de.malkusch.ha.notification.model.Notification.CallbackNotification;
+import de.malkusch.ha.notification.model.Notification.CallbackNotification.Callback;
+import de.malkusch.ha.notification.model.Notification.TextNotification;
 import de.malkusch.ha.notification.model.NotificationService;
+import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -28,7 +31,7 @@ public final class TrashCollectionNotificationApplicationService {
         var message = String.format("Die nächste Müllabfuhr kommt am %s: %s", //
                 date(event.nextCollection), //
                 trashCans(event.nextCollection));
-        var notification = new Notification(message);
+        var notification = new TextNotification(message);
         notificationService.send(notification);
     }
 
@@ -37,7 +40,8 @@ public final class TrashCollectionNotificationApplicationService {
         var message = String.format("Morgen (%s) kommt die Müllabfuhr: %s", //
                 date(event.nextCollection), //
                 trashCans(event.nextCollection));
-        var notification = new Notification(message);
+        var done = done(event.nextCollection);
+        var notification = new CallbackNotification(message, done);
         notificationService.send(notification);
     }
 
@@ -47,15 +51,22 @@ public final class TrashCollectionNotificationApplicationService {
                 .map(it -> trashCollection(it)) //
                 .reduce((a, b) -> a + "\n" + b) //
                 .orElse("keine Müllabfuhr");
-        var notification = new Notification(message);
+        var notification = new TextNotification(message);
         notificationService.send(notification);
     }
 
     @EventListener
     public void onNext(NextCollectionPrinted event) {
         var message = trashCollection(event.next());
-        var notification = new Notification(message);
+        var done = done(event.next());
+        var notification = new CallbackNotification(message, done);
         notificationService.send(notification);
+    }
+
+    private final TrashCollectionFormatter trashCollectionFormatter;
+
+    private Callback done(TrashCollection trashCollection) {
+        return new Callback("Erledigt", trashCollectionFormatter.format(trashCollection));
     }
 
     private static String trashCollection(TrashCollection trashCollection) {

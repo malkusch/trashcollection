@@ -25,7 +25,7 @@ public class NextTrashCollectionTest {
             "2023-01-03, 2023-01-18, 2023-01-19/RO", //
             "2023-01-04, 2023-01-18, 2023-01-19/RO", //
     })
-    public void doneShouldChangeNext(String first, String later, String expected) {
+    public void doneShouldChangeNext(String first, String later, String expected) throws Exception {
         var next = nextTrashCollection(first);
         var beforeDone = next.nextTrashCollection();
 
@@ -52,7 +52,7 @@ public class NextTrashCollectionTest {
 
             "2023-01-17, 2023-01-17, 2023-01-19/RO", //
     })
-    public void doneShouldNotChange(String now, String later, String expected) {
+    public void doneShouldNotChange(String now, String later, String expected) throws Exception {
         var next = nextTrashCollection(now);
         var beforeDone = next.nextTrashCollection();
 

@@ -1,33 +1,23 @@
 package de.malkusch.ha.automation.presentation;
 
-import static de.malkusch.ha.shared.infrastructure.telegram.CommandParser.noArgumentCommand;
-
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.application.ListNextCollectionsApplicationService;
-import de.malkusch.ha.automation.presentation.List.ListNextCollections;
-import de.malkusch.ha.shared.infrastructure.telegram.Command;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandHandler;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandParser;
-import de.malkusch.ha.shared.infrastructure.telegram.CommandParser.CommandHelp;
+import de.malkusch.telgrambot.Handler.TextHandler.Handling;
+import de.malkusch.telgrambot.Command;
+import de.malkusch.telgrambot.TelegramApi;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @RequiredArgsConstructor
-public final class List extends CommandHandler<ListNextCollections> {
+public final class List implements Handling {
 
+    public static final Command COMMAND = new Command("list");
+    
     private final ListNextCollectionsApplicationService service;
 
-    public record ListNextCollections() implements Command {
-    }
-
     @Override
-    public CommandParser<ListNextCollections> parser() {
-        return noArgumentCommand(new CommandHelp("list", "Zeigt die nächsten Müllabfuhren"), it -> new ListNextCollections());
-    }
-
-    @Override
-    public void handle(ListNextCollections command) {
+    public void handle(TelegramApi api) {
         service.listNext();
     }
 }
