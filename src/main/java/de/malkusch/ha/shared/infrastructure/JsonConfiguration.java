@@ -8,10 +8,10 @@ import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 @Configuration
-class JsonConfiguration {
+public class JsonConfiguration {
 
     @Bean
-    ObjectMapper objectMapper() {
+    public ObjectMapper objectMapper() {
         return new ObjectMapper() //
                 .registerModule(new JavaTimeModule()) //
                 .registerModule(new Jdk8Module());

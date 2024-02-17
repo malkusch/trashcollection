@@ -1,5 +1,6 @@
 package de.malkusch.ha.automation.model;
 
+import static de.malkusch.ha.test.CheckTrashDayServiceTests.tomorrowsTrashDayNoticed;
 import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
 
 import org.junit.jupiter.api.Test;
@@ -8,7 +9,6 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
-import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayNoticed;
 import de.malkusch.ha.shared.infrastructure.event.EventPublisherTests;
 import de.malkusch.ha.test.MockedClock;
 
@@ -90,9 +90,5 @@ public class CheckTrashDayServiceTest {
     private final void setTime(String now) {
         nextTrashCollection = nextTrashCollectionTests.nextTrashCollection(now);
         checkTrashDayService = new CheckTrashDayService(nextTrashCollection, mockedClock.clock);
-    }
-
-    private static TomorrowsTrashDayNoticed tomorrowsTrashDayNoticed(String trashCollection) {
-        return new TomorrowsTrashDayNoticed(trashCollection(trashCollection));
     }
 }
