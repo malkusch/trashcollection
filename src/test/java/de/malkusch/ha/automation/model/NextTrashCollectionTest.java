@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -181,6 +182,21 @@ public class NextTrashCollectionTest {
         var after = next.nextTrashCollection();
         assertEquals(before, after);
         assertEquals(trashCollection(expected), after);
+    }
+
+    @Test
+    public void checkNextAfterDoneShouldNotChange() throws Exception {
+        var first = "2023-01-01";
+        var next = nextTrashCollection(first);
+        next.done(next.nextTrashCollection());
+        var afterDone = next.nextTrashCollection();
+
+        next.checkNextChanged();
+        var afterCheck = next.nextTrashCollection();
+
+        var expected = "2023-01-05/RO";
+        assertEquals(afterDone, afterCheck);
+        assertEquals(trashCollection(expected), afterCheck);
     }
 
     @RegisterExtension

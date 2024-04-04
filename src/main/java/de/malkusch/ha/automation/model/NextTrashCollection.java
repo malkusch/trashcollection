@@ -28,6 +28,10 @@ public class NextTrashCollection {
         log.info("Next trash collection: {}", next);
     }
 
+    public static class TooOldException extends Exception {
+
+    }
+
     public static class TooFarInFutureException extends Exception {
 
     }
@@ -40,12 +44,14 @@ public class NextTrashCollection {
         try {
             done(next);
 
-        } catch (NotNextException e) {
+        } catch (NotNextException | TooOldException e) {
             throw new IllegalStateException(e);
         }
     }
 
-    public void done(TrashCollection doneCollection) throws TooFarInFutureException, NotNextException {
+    private volatile TrashCollection lastDone = TrashCollection.EMTPY;
+
+    public void done(TrashCollection doneCollection) throws TooFarInFutureException, NotNextException, TooOldException {
         if (!doneCollection.equals(next)) {
             throw new NotNextException();
         }
@@ -55,7 +61,11 @@ public class NextTrashCollection {
             throw new TooFarInFutureException();
         }
 
+        if (doneCollection.date().isBefore(lastDone.date())) {
+            throw new TooOldException();
+        }
         change(calendar.findNextTrashCollectionAfter(doneCollection.date()));
+        lastDone = doneCollection;
     }
 
     private void change(TrashCollection changed) {
@@ -71,11 +81,16 @@ public class NextTrashCollection {
 
     public void checkNextChanged() {
         log.debug("Checking if next changed");
-        var changedNext = calendar.findNextTrashCollectionAfter(LocalDate.now(clock));
+
+        var after = LocalDate.now(clock);
+        if (after.isBefore(lastDone.date())) {
+            after = lastDone.date();
+        }
+        var changedNext = calendar.findNextTrashCollectionAfter(after);
+
         if (changedNext.equals(this.next)) {
             return;
         }
-
         log.info("Next trash collection changed from {} to {}", next, changedNext);
         change(changedNext);
     }
@@ -83,7 +98,7 @@ public class NextTrashCollection {
     public TrashCollection nextTrashCollection() {
         return next;
     }
-    
+
     public boolean isTomorrow() {
         var today = now(clock);
         var tomorrow = today.plusDays(1);

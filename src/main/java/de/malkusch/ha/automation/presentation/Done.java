@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import de.malkusch.ha.automation.application.DoneNextCollectionApplicationService;
 import de.malkusch.ha.automation.model.NextTrashCollection.NotNextException;
 import de.malkusch.ha.automation.model.NextTrashCollection.TooFarInFutureException;
+import de.malkusch.ha.automation.model.NextTrashCollection.TooOldException;
 import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
 import de.malkusch.telgrambot.Command;
 import de.malkusch.telgrambot.Handler.CallbackHandler.Handling;
@@ -29,8 +30,11 @@ public final class Done implements Handling {
             service.done(trashCollection);
             return new Result(true);
 
+        } catch (TooOldException e) {
+            return new Result(true, "Zu alt zum Erledigen");
+            
         } catch (TooFarInFutureException e) {
-            return new Result(false, "Zu früh zum erledigen");
+            return new Result(false, "Zu früh zum Erledigen");
 
         } catch (NotNextException e) {
             return new Result(true);
