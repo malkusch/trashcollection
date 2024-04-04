@@ -1,6 +1,7 @@
 package de.malkusch.ha.automation.model;
 
 import static de.malkusch.ha.test.CheckTrashDayServiceTests.tomorrowsTrashDayNoticed;
+import static de.malkusch.ha.test.CheckTrashDayServiceTests.tomorrowsTrashDayReminded;
 import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
 
 import org.junit.jupiter.api.Test;
@@ -22,7 +23,7 @@ public class CheckTrashDayServiceTest {
     public void shouldNotPublishWhenCollectionIsNotTomorrow(String now) {
         setTime(now);
 
-        checkTrashDayService.checkTomorrow();
+        checkTrashDayService.check(nextTrashCollection);
 
         eventPublisherTests.assertNoEvent();
     }
@@ -32,51 +33,75 @@ public class CheckTrashDayServiceTest {
             "2023-01-04, 2023-01-05/RO", //
             "2023-01-18, 2023-01-19/RO", //
     })
-    public void shouldPublishWhenCollectionIsTomorrow(String now, String expected) {
+    public void shouldNoticeNextWhenCollectionIsTomorrow(String now, String expected) {
         setTime(now);
 
-        checkTrashDayService.checkTomorrow();
+        checkTrashDayService.check(nextTrashCollection);
 
         eventPublisherTests.assertEvent(tomorrowsTrashDayNoticed(expected));
     }
 
     @Test
-    public void shouldContinuePublishing() {
+    public void shouldRemind() {
         setTime("2023-01-04");
+        checkTrashDayService.check(nextTrashCollection);
 
-        checkTrashDayService.checkTomorrow();
-        checkTrashDayService.checkTomorrow();
+        checkTrashDayService.check(nextTrashCollection);
+        checkTrashDayService.check(nextTrashCollection);
 
-        eventPublisherTests.assertEvents(2, tomorrowsTrashDayNoticed("2023-01-05/RO"));
+        eventPublisherTests.assertEvents(2, tomorrowsTrashDayReminded("2023-01-05/RO"));
     }
 
     @Test
-    public void shouldStopPublishingAfterDone() throws Exception {
+    public void shouldNoticeOnlyOnce() {
         setTime("2023-01-04");
-        checkTrashDayService.checkTomorrow();
-        checkTrashDayService.checkTomorrow();
+
+        checkTrashDayService.check(nextTrashCollection);
+        checkTrashDayService.check(nextTrashCollection);
+
+        eventPublisherTests.assertEvent(tomorrowsTrashDayNoticed("2023-01-05/RO"));
+    }
+
+    @Test
+    public void shouldStopRemindingAfterDoneAfterNotice() throws Exception {
+        setTime("2023-01-04");
+        checkTrashDayService.check(nextTrashCollection);
 
         nextTrashCollection.done(trashCollection("2023-01-05/RO"));
-        checkTrashDayService.checkTomorrow();
+        checkTrashDayService.check(nextTrashCollection);
 
-        eventPublisherTests.assertEvents(2, tomorrowsTrashDayNoticed("2023-01-05/RO"));
+        eventPublisherTests.assertEvents(1, tomorrowsTrashDayNoticed("2023-01-05/RO"));
+        eventPublisherTests.assertEvents(0, tomorrowsTrashDayReminded("2023-01-05/RO"));
+    }
+
+    @Test
+    public void shouldStopRemindingAfterDoneAfterRemind() throws Exception {
+        setTime("2023-01-04");
+        checkTrashDayService.check(nextTrashCollection);
+        checkTrashDayService.check(nextTrashCollection);
+
+        nextTrashCollection.done(trashCollection("2023-01-05/RO"));
+        checkTrashDayService.check(nextTrashCollection);
+
+        eventPublisherTests.assertEvents(1, tomorrowsTrashDayNoticed("2023-01-05/RO"));
+        eventPublisherTests.assertEvents(1, tomorrowsTrashDayReminded("2023-01-05/RO"));
     }
 
     @ParameterizedTest
     @ValueSource(strings = { "2023-01-01/RO", "2023-01-02/RO" })
-    public void shouldNotStopPublishingAfterDoneWrong(String done) {
+    public void shouldNotStopRemindingAfterDoneWrong(String done) {
         setTime("2023-01-04");
-        checkTrashDayService.checkTomorrow();
-        checkTrashDayService.checkTomorrow();
+        checkTrashDayService.check(nextTrashCollection);
+        checkTrashDayService.check(nextTrashCollection);
 
         try {
             nextTrashCollection.done(trashCollection(done));
         } catch (Exception e) {
             // Ignore
         }
-        checkTrashDayService.checkTomorrow();
+        checkTrashDayService.check(nextTrashCollection);
 
-        eventPublisherTests.assertEvents(3, tomorrowsTrashDayNoticed("2023-01-05/RO"));
+        eventPublisherTests.assertEvents(2, tomorrowsTrashDayReminded("2023-01-05/RO"));
     }
 
     private final MockedClock mockedClock = new MockedClock();
@@ -89,6 +114,6 @@ public class CheckTrashDayServiceTest {
 
     private final void setTime(String now) {
         nextTrashCollection = nextTrashCollectionTests.nextTrashCollection(now);
-        checkTrashDayService = new CheckTrashDayService(nextTrashCollection, mockedClock.clock);
+        checkTrashDayService = new CheckTrashDayService();
     }
 }

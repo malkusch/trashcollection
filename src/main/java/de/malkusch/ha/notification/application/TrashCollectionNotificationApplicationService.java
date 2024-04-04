@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import de.malkusch.ha.automation.application.ListNextCollectionsApplicationService.NextCollectionsListed;
 import de.malkusch.ha.automation.application.PrintNextCollectionApplicationService.NextCollectionPrinted;
 import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayNoticed;
+import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayReminded;
 import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.notification.model.Notification.CallbackNotification;
@@ -42,6 +43,13 @@ public final class TrashCollectionNotificationApplicationService {
                 trashCans(event.nextCollection()));
         var done = done(event.nextCollection());
         var notification = new CallbackNotification(message, done);
+        notificationService.send(notification);
+    }
+
+    @EventListener
+    public void onTrashDayReminder(TomorrowsTrashDayReminded event) {
+        var message = "Reminder: Der Müll ist noch nicht erledigt";
+        var notification = new TextNotification(message);
         notificationService.send(notification);
     }
 

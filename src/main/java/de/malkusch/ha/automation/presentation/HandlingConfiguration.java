@@ -19,6 +19,8 @@ public class HandlingConfiguration {
     private final List list;
     private final Next next;
     private final Done done;
+    private final Debug.Changed debugChanged;
+    private final Debug.Trashday debugTrashday;
     private final TelegramApi telegram;
 
     @PostConstruct
@@ -26,6 +28,8 @@ public class HandlingConfiguration {
         telegram.startDispatcher(Arrays.asList( //
                 new Handler.TextHandler(List.COMMAND, list), //
                 new Handler.TextHandler(Next.COMMAND, next), //
+                new Handler.TextHandler(Debug.Changed.COMMAND, debugChanged), //
+                new Handler.TextHandler(Debug.Trashday.COMMAND, debugTrashday), //
                 new Handler.CallbackHandler(Done.COMMAND, done) //
         ));
     }

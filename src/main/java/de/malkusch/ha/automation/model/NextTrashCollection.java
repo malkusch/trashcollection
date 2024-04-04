@@ -1,6 +1,7 @@
 package de.malkusch.ha.automation.model;
 
 import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
+import static java.time.LocalDate.now;
 
 import java.time.Clock;
 import java.time.LocalDate;
@@ -81,6 +82,12 @@ public class NextTrashCollection {
 
     public TrashCollection nextTrashCollection() {
         return next;
+    }
+    
+    public boolean isTomorrow() {
+        var today = now(clock);
+        var tomorrow = today.plusDays(1);
+        return next.date().isEqual(tomorrow);
     }
 
     @RequiredArgsConstructor
