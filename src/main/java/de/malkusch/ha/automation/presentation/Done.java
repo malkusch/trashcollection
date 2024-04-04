@@ -1,5 +1,7 @@
 package de.malkusch.ha.automation.presentation;
 
+import static de.malkusch.telgrambot.TelegramApi.Reaction.THUMBS_UP;
+
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.automation.application.DoneNextCollectionApplicationService;
@@ -28,7 +30,7 @@ public final class Done implements Handling {
         try {
             var trashCollection = trashCollectionFormatter.parse(message.callback().data());
             service.done(trashCollection);
-            return new Result(true);
+            return new Result(true, THUMBS_UP);
 
         } catch (TooOldException e) {
             return new Result(true, "Zu alt zum Erledigen");
