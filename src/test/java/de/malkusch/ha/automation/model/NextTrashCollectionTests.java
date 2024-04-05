@@ -25,8 +25,12 @@ public class NextTrashCollectionTests implements Extension {
     }
 
     public NextTrashCollection nextTrashCollection(String now) {
-        mockedClock.mockDate(now);
         var calendar = CalenderTests.calendar(TestCalendar.CALENDAR_2023);
+        return nextTrashCollection(now, calendar);
+    }
+
+    public NextTrashCollection nextTrashCollection(String now, TrashCollectionCalendar calendar) {
+        mockedClock.mockDate(now);
         var next = new NextTrashCollection(calendar, mockedClock.clock);
         return next;
     }

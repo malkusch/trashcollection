@@ -71,8 +71,11 @@ public class NextTrashCollection {
         if (changed.equals(next)) {
             return;
         }
-        if (changed.date().isBefore(next.date())) {
-            throw new IllegalArgumentException(String.format("%s is before %s", changed, next));
+        if (changed.date().isBefore(lastDone.date())) {
+            throw new IllegalArgumentException(String.format("%s is before last done %s", changed, lastDone));
+        }
+        if (changed.date().isBefore(LocalDate.now(clock))) {
+            throw new IllegalArgumentException(String.format("%s is in the past", changed));
         }
         next = changed;
         publish(new NextTrashCollectionChanged(changed));

@@ -15,6 +15,7 @@ import de.malkusch.ha.automation.model.NextTrashCollection.NotNextException;
 import de.malkusch.ha.automation.model.NextTrashCollection.TooFarInFutureException;
 import de.malkusch.ha.shared.infrastructure.event.EventPublisherTests;
 import de.malkusch.ha.test.MockedClock;
+import de.malkusch.ha.test.MutableCalendar;
 
 public class NextTrashCollectionTest {
 
@@ -185,6 +186,20 @@ public class NextTrashCollectionTest {
         next.checkNextChanged();
 
         eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-19/RO"));
+    }
+    
+    @Test
+    public void checkNextChangedShouldPublishMessageAfterCalendarChange() {
+        var calendar = new MutableCalendar("2023-01-05/RO", "2023-01-15/RO", "2023-01-29/RO");
+        var next = nextTrashCollectionTests.nextTrashCollection("2023-01-06", calendar);
+        
+        next.checkNextChanged();
+        eventPublisherTests.assertNoEvent();
+        
+        calendar.add("2023-01-10/RO");
+        next.checkNextChanged();
+        
+        eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-10/RO"));
     }
 
     @ParameterizedTest

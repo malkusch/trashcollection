@@ -47,6 +47,7 @@ public class CheckTrashDayServiceTest {
         checkTrashDayService.check(nextTrashCollection);
 
         setTime("2023-10-25");
+        nextTrashCollection.checkNextChanged();
         checkTrashDayService.check(nextTrashCollection);
 
         eventPublisherTests.assertEvent(tomorrowsTrashDayNoticed("2023-10-26/RO"));
@@ -136,6 +137,10 @@ public class CheckTrashDayServiceTest {
     private final EventPublisherTests eventPublisherTests = new EventPublisherTests();
 
     private final void setTime(String now) {
-        nextTrashCollection = nextTrashCollectionTests.nextTrashCollection(now);
+        if (nextTrashCollection == null) {
+            nextTrashCollection = nextTrashCollectionTests.nextTrashCollection(now);
+        } else {
+            mockedClock.mockDate(now);
+        }
     }
 }
