@@ -1,5 +1,6 @@
 package de.malkusch.ha.automation.model;
 
+import static de.malkusch.ha.automation.model.NextTrashCollectionTests.nextTrashCollectionChanged;
 import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
@@ -12,6 +13,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 
 import de.malkusch.ha.automation.model.NextTrashCollection.NotNextException;
 import de.malkusch.ha.automation.model.NextTrashCollection.TooFarInFutureException;
+import de.malkusch.ha.shared.infrastructure.event.EventPublisherTests;
 import de.malkusch.ha.test.MockedClock;
 
 public class NextTrashCollectionTest {
@@ -154,6 +156,37 @@ public class NextTrashCollectionTest {
         assertEquals(trashCollection(expected), after);
     }
 
+    @Test
+    public void checkNextChangedShouldPublishMessageOnNextDay() {
+        var first = "2023-01-03";
+        var next = nextTrashCollection(first);
+        next.checkNextChanged();
+
+        mockedClock.mockDate("2023-01-05");
+        next.checkNextChanged();
+
+        eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-19/RO"));
+    }
+
+    @Test
+    public void doneShouldPublishMessage() throws Exception {
+        var next = nextTrashCollection("2023-01-04");
+        next.done(next.nextTrashCollection());
+
+        eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-19/RO"));
+    }
+
+    @Test
+    public void checkNextChangedShouldNotPublishMessageAfterDone() throws Exception {
+        var next = nextTrashCollection("2023-01-04");
+        next.done(next.nextTrashCollection());
+        mockedClock.mockDate("2023-01-05");
+
+        next.checkNextChanged();
+
+        eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-19/RO"));
+    }
+
     @ParameterizedTest
     @CsvSource({ //
             "2023-01-01, 2023-01-01, 2023-01-02/PP", //
@@ -205,4 +238,7 @@ public class NextTrashCollectionTest {
     private NextTrashCollection nextTrashCollection(String now) {
         return nextTrashCollectionTests.nextTrashCollection(now);
     }
+
+    @RegisterExtension
+    private final EventPublisherTests eventPublisherTests = new EventPublisherTests();
 }

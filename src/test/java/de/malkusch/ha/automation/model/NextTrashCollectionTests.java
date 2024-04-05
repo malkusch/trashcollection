@@ -1,8 +1,11 @@
 package de.malkusch.ha.automation.model;
 
+import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
+
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.Extension;
 
+import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
 import de.malkusch.ha.shared.infrastructure.event.EventPublisherTests;
 import de.malkusch.ha.test.CalenderTests;
 import de.malkusch.ha.test.MockedClock;
@@ -26,5 +29,9 @@ public class NextTrashCollectionTests implements Extension {
         var calendar = CalenderTests.calendar(TestCalendar.CALENDAR_2023);
         var next = new NextTrashCollection(calendar, mockedClock.clock);
         return next;
+    }
+
+    public static NextTrashCollectionChanged nextTrashCollectionChanged(String trashCollection) {
+        return new NextTrashCollectionChanged(trashCollection(trashCollection));
     }
 }

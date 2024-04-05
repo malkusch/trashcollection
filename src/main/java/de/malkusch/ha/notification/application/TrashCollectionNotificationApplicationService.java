@@ -30,8 +30,8 @@ public final class TrashCollectionNotificationApplicationService {
     @EventListener
     public void onChanged(NextTrashCollectionChanged event) {
         var message = String.format("Die nächste Müllabfuhr kommt am %s: %s", //
-                date(event.nextCollection), //
-                trashCans(event.nextCollection));
+                date(event.nextCollection()), //
+                trashCans(event.nextCollection()));
         var notification = new TextNotification(message);
         notificationService.send(notification);
     }

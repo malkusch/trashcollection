@@ -9,7 +9,6 @@ import java.time.LocalDate;
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.shared.infrastructure.event.Event;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
@@ -105,8 +104,6 @@ public class NextTrashCollection {
         return next.date().isEqual(tomorrow);
     }
 
-    @RequiredArgsConstructor
-    public static final class NextTrashCollectionChanged implements Event {
-        public final TrashCollection nextCollection;
+    public record NextTrashCollectionChanged(TrashCollection nextCollection) implements Event {
     }
 }
