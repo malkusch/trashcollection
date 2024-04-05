@@ -187,19 +187,21 @@ public class NextTrashCollectionTest {
 
         eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-19/RO"));
     }
-    
+
     @Test
     public void checkNextChangedShouldPublishMessageAfterCalendarChange() {
         var calendar = new MutableCalendar("2023-01-05/RO", "2023-01-15/RO", "2023-01-29/RO");
         var next = nextTrashCollectionTests.nextTrashCollection("2023-01-06", calendar);
-        
+
         next.checkNextChanged();
         eventPublisherTests.assertNoEvent();
-        
+
         calendar.add("2023-01-10/RO");
         next.checkNextChanged();
-        
-        eventPublisherTests.assertEvent(nextTrashCollectionChanged("2023-01-10/RO"));
+
+        var expected = "2023-01-10/RO";
+        assertEquals(trashCollection(expected), next.nextTrashCollection());
+        eventPublisherTests.assertEvent(nextTrashCollectionChanged(expected));
     }
 
     @ParameterizedTest
