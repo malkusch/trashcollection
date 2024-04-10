@@ -28,7 +28,7 @@ public final class Done implements Handling {
     @Override
     public Result handle(TelegramApi api, CallbackMessage message) {
         try {
-            var trashCollection = trashCollectionFormatter.parse(message.callback().data());
+            var trashCollection = trashCollectionFormatter.parseJson(message.callback().data());
             service.done(trashCollection);
             return new Result(true, THUMBS_UP);
 

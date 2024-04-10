@@ -15,10 +15,10 @@ public final class PrintNextCollectionApplicationService {
 
     private final NextTrashCollection next;
 
-    public static final record NextCollectionPrinted(TrashCollection next) implements Event {
+    public static final record Next(TrashCollection next) {
     }
 
-    public void printNext() {
-        publish(new NextCollectionPrinted(next.nextTrashCollection()));
+    public Next printNext() {
+        return new Next(next.nextTrashCollection());
     }
 }
