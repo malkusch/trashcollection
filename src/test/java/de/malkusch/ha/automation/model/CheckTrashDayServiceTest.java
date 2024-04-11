@@ -16,7 +16,7 @@ import de.malkusch.ha.test.MockedClock;
 public class CheckTrashDayServiceTest {
 
     private NextTrashCollection nextTrashCollection;
-    private CheckTrashDayService checkTrashDayService;
+    private final CheckTrashDayService checkTrashDayService = new CheckTrashDayService();
 
     @ParameterizedTest
     @ValueSource(strings = { "2023-01-02", "2023-01-03", "2023-01-05", "2023-01-06" })
@@ -39,6 +39,29 @@ public class CheckTrashDayServiceTest {
         checkTrashDayService.check(nextTrashCollection);
 
         eventPublisherTests.assertEvent(tomorrowsTrashDayNoticed(expected));
+    }
+
+    @Test
+    public void shouldNoticeWhenNextCollectionIsOnNextDayWithoutDone() throws Exception {
+        setTime("2023-10-24");
+        checkTrashDayService.check(nextTrashCollection);
+
+        setTime("2023-10-25");
+        checkTrashDayService.check(nextTrashCollection);
+
+        eventPublisherTests.assertEvent(tomorrowsTrashDayNoticed("2023-10-26/RO"));
+    }
+
+    @Test
+    public void shouldNoticeWhenNextCollectionIsOnNextDayWithDone() throws Exception {
+        setTime("2023-10-24");
+        checkTrashDayService.check(nextTrashCollection);
+        nextTrashCollection.done(nextTrashCollection.nextTrashCollection());
+
+        setTime("2023-10-25");
+        checkTrashDayService.check(nextTrashCollection);
+
+        eventPublisherTests.assertEvent(tomorrowsTrashDayNoticed("2023-10-26/RO"));
     }
 
     @Test
@@ -114,6 +137,5 @@ public class CheckTrashDayServiceTest {
 
     private final void setTime(String now) {
         nextTrashCollection = nextTrashCollectionTests.nextTrashCollection(now);
-        checkTrashDayService = new CheckTrashDayService();
     }
 }

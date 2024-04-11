@@ -11,41 +11,30 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public final class CheckTrashDayService {
 
-    private static enum State {
-        REMINDING_NEXT, WAITING_FOR_NEXT
-    }
-
-    private volatile State state = State.WAITING_FOR_NEXT;
+    private volatile TrashCollection last = TrashCollection.EMTPY;
 
     public void check(NextTrashCollection next) {
-        state = switch (state) {
-        case WAITING_FOR_NEXT -> {
-            if (next.isTomorrow()) {
-                noticeNext(next);
-                yield State.REMINDING_NEXT;
-            } else {
-                yield State.WAITING_FOR_NEXT;
-            }
+        if (!next.isTomorrow()) {
+            return;
         }
-        case REMINDING_NEXT -> {
-            if (next.isTomorrow()) {
-                remindNext(next);
-                yield State.REMINDING_NEXT;
-            } else {
-                yield State.WAITING_FOR_NEXT;
-            }
+        var trashCollection = next.nextTrashCollection();
+        if (last.equals(trashCollection)) {
+            remindNext(trashCollection);
+
+        } else {
+            noticeNext(trashCollection);
+            last = trashCollection;
         }
-        };
     }
 
-    private void remindNext(NextTrashCollection next) {
+    private void remindNext(TrashCollection next) {
         log.info("Reminding tomorrow's trash day for {}", next);
-        publish(new TomorrowsTrashDayReminded(next.nextTrashCollection()));
+        publish(new TomorrowsTrashDayReminded(next));
     }
 
-    private void noticeNext(NextTrashCollection next) {
+    private void noticeNext(TrashCollection next) {
         log.info("Noticed tomorrow's trash day for {}", next);
-        publish(new TomorrowsTrashDayNoticed(next.nextTrashCollection()));
+        publish(new TomorrowsTrashDayNoticed(next));
     }
 
     public record TomorrowsTrashDayNoticed(TrashCollection nextCollection) implements Event {
