@@ -1,19 +1,17 @@
 package de.malkusch.ha.automation.presentation;
 
-import java.util.Arrays;
-
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
-import org.springframework.context.annotation.Configuration;
-
-import de.malkusch.ha.shared.infrastructure.telegram.TelegramConfiguration;
+import de.malkusch.ha.notification.infrastructure.telegram.TelegramEnabled;
 import de.malkusch.telgrambot.Handler;
 import de.malkusch.telgrambot.TelegramApi;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Configuration;
+
+import java.util.Arrays;
 
 @Configuration
 @RequiredArgsConstructor
-@ConditionalOnBean(TelegramConfiguration.class)
+@TelegramEnabled
 public class HandlingConfiguration {
 
     private final List list;
