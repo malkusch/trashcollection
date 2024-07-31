@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 import lombok.Data;
 
 @Configuration
-class HttpConfiguration {
+public class HttpConfiguration {
 
     @Component
     @ConfigurationProperties("http")

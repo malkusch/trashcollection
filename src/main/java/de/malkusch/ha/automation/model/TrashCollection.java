@@ -11,6 +11,8 @@ import java.util.Set;
 
 public record TrashCollection(LocalDate date, Set<TrashCan> trashCans) {
 
+    public static final TrashCollection EMTPY = new TrashCollection(LocalDate.MIN, TrashCan.values());
+
     public TrashCollection(LocalDate date, Collection<TrashCan> trashCans) {
         this(date, new HashSet<>(trashCans));
     }

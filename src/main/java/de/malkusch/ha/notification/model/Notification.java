@@ -1,9 +1,19 @@
 package de.malkusch.ha.notification.model;
 
-public record Notification(String message) {
+import de.malkusch.ha.notification.model.Notification.CallbackNotification.Callback;
 
-    @Override
-    public String toString() {
-        return message;
+public sealed interface Notification {
+
+    public record TextNotification(String message) implements Notification {
+
+        @Override
+        public String toString() {
+            return message;
+        }
+    }
+
+    public record CallbackNotification(String message, Callback callback) implements Notification {
+        public record Callback(String name, String payload) {
+        }
     }
 }

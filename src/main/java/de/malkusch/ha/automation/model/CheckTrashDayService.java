@@ -1,38 +1,45 @@
 package de.malkusch.ha.automation.model;
 
 import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
-import static java.time.LocalDate.now;
 
 import org.springframework.stereotype.Service;
 
 import de.malkusch.ha.shared.infrastructure.event.Event;
-import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@RequiredArgsConstructor
 @Slf4j
 public final class CheckTrashDayService {
 
-    private final NextTrashCollection next;
+    private volatile TrashCollection last = TrashCollection.EMTPY;
 
-    private volatile TrashCollection lastNotification;
+    public void check(NextTrashCollection next) {
+        if (!next.isTomorrow()) {
+            return;
+        }
+        var trashCollection = next.nextTrashCollection();
+        if (last.equals(trashCollection)) {
+            remindNext(trashCollection);
 
-    public void checkTomorrow() {
-        log.debug("Checking trash day");
-        var today = now();
-        var tomorrow = today.plusDays(1);
-        var next = this.next.nextTrashCollection();
-        if (next.date().isEqual(tomorrow) && !next.equals(lastNotification)) {
-            log.info("Noticed tomorrow's trash day for {}", next);
-            publish(new TomorrowsTrashDayNoticed(next));
-
-            lastNotification = next;
+        } else {
+            noticeNext(trashCollection);
+            last = trashCollection;
         }
     }
 
-    @RequiredArgsConstructor
-    public static final class TomorrowsTrashDayNoticed implements Event {
-        public final TrashCollection nextCollection;
+    private void remindNext(TrashCollection next) {
+        log.info("Reminding tomorrow's trash day for {}", next);
+        publish(new TomorrowsTrashDayReminded(next));
+    }
+
+    private void noticeNext(TrashCollection next) {
+        log.info("Noticed tomorrow's trash day for {}", next);
+        publish(new TomorrowsTrashDayNoticed(next));
+    }
+
+    public record TomorrowsTrashDayNoticed(TrashCollection nextCollection) implements Event {
+    }
+
+    public record TomorrowsTrashDayReminded(TrashCollection nextCollection) implements Event {
     }
 }

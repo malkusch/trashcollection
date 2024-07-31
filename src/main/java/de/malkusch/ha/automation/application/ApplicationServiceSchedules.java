@@ -39,11 +39,12 @@ public class ApplicationServiceSchedules {
     public static final class CheckTrashDaySchedule {
 
         private final CheckTrashDayService checker;
+        private final NextTrashCollection next;
 
-        @Scheduled(cron = "59 59 5/6 * * *")
+        @Scheduled(cron = "59 59 5,20,21,22 * * *")
         public void checkTrashDay() {
             try {
-                checker.checkTomorrow();
+                checker.check(next);
 
             } catch (Exception e) {
                 var event = new ErrorLogged("Failed checking if tomorrow is trash day");
