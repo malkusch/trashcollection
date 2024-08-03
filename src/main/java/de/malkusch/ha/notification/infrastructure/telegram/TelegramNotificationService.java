@@ -1,17 +1,14 @@
 package de.malkusch.ha.notification.infrastructure.telegram;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 import de.malkusch.ha.notification.model.Notification;
 import de.malkusch.ha.notification.model.Notification.CallbackNotification;
 import de.malkusch.ha.notification.model.Notification.TextNotification;
 import de.malkusch.ha.notification.model.NotificationService;
-import de.malkusch.telgrambot.TelegramApi;
-import lombok.RequiredArgsConstructor;
-import de.malkusch.telgrambot.Handler.CallbackHandler.Result;
-import de.malkusch.telgrambot.Message.CallbackMessage.Callback;
-import de.malkusch.telgrambot.TelegramApi.Button;
+import de.malkusch.telgrambot.Callback;
 import de.malkusch.telgrambot.Command;
+import de.malkusch.telgrambot.TelegramApi;
+import de.malkusch.telgrambot.TelegramApi.Button;
+import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 final class TelegramNotificationService implements NotificationService {

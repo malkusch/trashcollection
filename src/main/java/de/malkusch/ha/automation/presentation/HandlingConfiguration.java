@@ -1,13 +1,13 @@
 package de.malkusch.ha.automation.presentation;
 
 import de.malkusch.ha.notification.infrastructure.telegram.TelegramEnabled;
-import de.malkusch.telgrambot.Handler;
 import de.malkusch.telgrambot.TelegramApi;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
+import static de.malkusch.telgrambot.UpdateReceiver.onCallback;
+import static de.malkusch.telgrambot.UpdateReceiver.onCommand;
 
 @Configuration
 @RequiredArgsConstructor
@@ -23,13 +23,13 @@ public class HandlingConfiguration {
 
     @PostConstruct
     public void setup() {
-        telegram.startDispatcher(Arrays.asList( //
-                new Handler.TextHandler(List.COMMAND, list), //
-                new Handler.TextHandler(Next.COMMAND, next), //
-                new Handler.TextHandler(Debug.Changed.COMMAND, debugChanged), //
-                new Handler.TextHandler(Debug.Trashday.COMMAND, debugTrashday), //
-                new Handler.CallbackHandler(Done.COMMAND, done) //
-        ));
+        telegram.receiveUpdates( //
+                onCommand(List.COMMAND, list), //
+                onCommand(Next.COMMAND, next), //
+                onCommand(Debug.Changed.COMMAND, debugChanged), //
+                onCommand(Debug.Trashday.COMMAND, debugTrashday), //
+                onCallback(Done.COMMAND, done) //
+        );
     }
 
 }

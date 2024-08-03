@@ -7,19 +7,17 @@ import de.malkusch.ha.automation.model.NextTrashCollection.TooOldException;
 import de.malkusch.ha.notification.infrastructure.telegram.TelegramEnabled;
 import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
 import de.malkusch.telgrambot.Command;
-import de.malkusch.telgrambot.Handler.CallbackHandler.Handling;
-import de.malkusch.telgrambot.Handler.CallbackHandler.Result;
-import de.malkusch.telgrambot.Message.CallbackMessage;
-import de.malkusch.telgrambot.TelegramApi;
+import de.malkusch.telgrambot.Update.CallbackUpdate;
+import de.malkusch.telgrambot.UpdateReceiver.CallbackReceiver;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static de.malkusch.telgrambot.TelegramApi.Reaction.THUMBS_UP;
+import static de.malkusch.telgrambot.Reaction.THUMBS_UP;
 
 @Service
 @RequiredArgsConstructor
 @TelegramEnabled
-public final class Done implements Handling {
+public final class Done implements CallbackReceiver {
 
     public static final Command COMMAND = new Command("done");
 
@@ -27,9 +25,9 @@ public final class Done implements Handling {
     private final TrashCollectionFormatter trashCollectionFormatter;
 
     @Override
-    public Result handle(TelegramApi api, CallbackMessage message) {
+    public Result receive(CallbackUpdate update) {
         try {
-            var trashCollection = trashCollectionFormatter.parseJson(message.callback().data());
+            var trashCollection = trashCollectionFormatter.parseJson(update.callback().data());
             service.done(trashCollection);
             return new Result(true, THUMBS_UP);
 
