@@ -4,10 +4,10 @@ import de.malkusch.ha.notification.model.Notification;
 import de.malkusch.ha.notification.model.Notification.CallbackNotification;
 import de.malkusch.ha.notification.model.Notification.TextNotification;
 import de.malkusch.ha.notification.model.NotificationService;
+import de.malkusch.telgrambot.Callback;
 import de.malkusch.telgrambot.Command;
 import de.malkusch.telgrambot.TelegramApi;
 import de.malkusch.telgrambot.TelegramApi.Button;
-import de.malkusch.telgrambot.Update.CallbackUpdate.Callback;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
