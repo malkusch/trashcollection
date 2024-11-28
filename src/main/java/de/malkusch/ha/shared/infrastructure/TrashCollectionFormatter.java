@@ -1,23 +1,27 @@
 package de.malkusch.ha.shared.infrastructure;
 
-import static java.util.Locale.GERMANY;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import de.malkusch.ha.automation.model.TrashCollection;
+import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 
-import org.springframework.stereotype.Service;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import de.malkusch.ha.automation.model.TrashCollection;
-import lombok.RequiredArgsConstructor;
+import static com.fasterxml.jackson.databind.SerializationFeature.WRITE_ENUMS_USING_INDEX;
+import static java.util.Locale.GERMANY;
 
 @Service
-@RequiredArgsConstructor
 public class TrashCollectionFormatter {
 
+    private final ObjectWriter writer;
     private final ObjectMapper mapper;
+
+    public TrashCollectionFormatter(ObjectMapper mapper) {
+        this.mapper = mapper;
+        this.writer = mapper.writer().with(WRITE_ENUMS_USING_INDEX);
+    }
 
     public TrashCollection parseJson(String json) {
         try {
@@ -29,12 +33,12 @@ public class TrashCollectionFormatter {
 
     public String json(TrashCollection trashCollection) {
         try {
-            return mapper.writeValueAsString(trashCollection);
+            return writer.writeValueAsString(trashCollection);
         } catch (JsonProcessingException e) {
             throw new IllegalStateException("Can't format TrashCollection: " + trashCollection, e);
         }
     }
-    
+
     public static String trashCollection(TrashCollection trashCollection) {
         return String.format("%s:\t%s", //
                 date(trashCollection), //
