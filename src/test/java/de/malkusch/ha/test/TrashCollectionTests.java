@@ -27,11 +27,13 @@ public final class TrashCollectionTests {
 
         private static final TrashCan[] PP = { PAPER, PLASTIC };
         private static final TrashCan[] RO = { RESIDUAL, ORGANIC };
+        private static final TrashCan[] PPRO = { PAPER, PLASTIC, RESIDUAL, ORGANIC };
 
         private TrashCan[] trashCans(String can) {
             return switch (can) {
             case "PP" -> PP;
             case "RO" -> RO;
+            case "PPRO" -> PPRO;
             default -> throw new IllegalArgumentException(can);
             };
         }
