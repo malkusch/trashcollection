@@ -17,10 +17,11 @@ public record TestCalendar(int year) {
 
     public final static TestCalendar CALENDAR_2023 = new TestCalendar(2023);
     public final static TestCalendar CALENDAR_2024 = new TestCalendar(2024);
+    public final static TestCalendar CALENDAR_2025 = new TestCalendar(2025);
 
     public record TestCalendars(TestCalendar... calendars) {
 
-        public final static TestCalendars ALL = new TestCalendars(CALENDAR_2023, CALENDAR_2024);
+        public final static TestCalendars ALL = new TestCalendars(CALENDAR_2023, CALENDAR_2024, CALENDAR_2025);
 
         public <T> Stream<T> testCases(ScenarioMapper<T> mapper) {
             return stream(calendars) //
