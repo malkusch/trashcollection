@@ -36,7 +36,7 @@ public class InMemoryTrashCollectionCalendarTest {
     private final HttpClient http = mock(HttpClient.class);
     private final MockedClock mockedClock = new MockedClock();
 
-    private static record Scenario(LocalDate now, TimeZone system, TrashCollection expected) {
+    private record Scenario(LocalDate now, TimeZone system, TrashCollection expected) {
     }
 
     private static Stream<Scenario> shouldFindTrashCollection() {

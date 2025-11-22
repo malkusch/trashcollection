@@ -1,15 +1,14 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
+import lombok.extern.slf4j.Slf4j;
+import tools.jackson.databind.ObjectMapper;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public final class InMemoryCalendarCache {
@@ -22,7 +21,7 @@ public final class InMemoryCalendarCache {
     }
 
     public InMemoryCalendarCache(Path path) throws IOException {
-        this(path, new ObjectMapper().findAndRegisterModules());
+        this(path, new ObjectMapper());
     }
 
     public InMemoryCalendarCache(Path path, ObjectMapper mapper) throws IOException {
