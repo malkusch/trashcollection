@@ -44,7 +44,7 @@ public final class Ical4jCalendarProvider implements CalendarProvider {
         return new TrashCollections(collections);
     }
 
-    private static record IncompleteTrashCollection(LocalDate date, TrashCan can) {
+    private record IncompleteTrashCollection(LocalDate date, TrashCan can) {
     }
 
     private static TrashCollection toTrashCollection(LocalDate date, List<IncompleteTrashCollection> dateCans) {

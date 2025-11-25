@@ -1,6 +1,10 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
-import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
+import de.malkusch.ha.automation.model.TrashCollection;
+import de.malkusch.ha.automation.model.TrashCollectionCalendar;
+import de.malkusch.ha.shared.infrastructure.event.ErrorLogged;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.scheduling.annotation.Scheduled;
 
 import java.io.IOException;
 import java.time.Clock;
@@ -8,12 +12,7 @@ import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.stream.Stream;
 
-import org.springframework.scheduling.annotation.Scheduled;
-
-import de.malkusch.ha.automation.model.TrashCollection;
-import de.malkusch.ha.automation.model.TrashCollectionCalendar;
-import de.malkusch.ha.shared.infrastructure.event.ErrorLogged;
-import lombok.extern.slf4j.Slf4j;
+import static de.malkusch.ha.shared.infrastructure.event.EventPublisher.publish;
 
 @Slf4j
 final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, AutoCloseable {
@@ -69,9 +68,8 @@ final class InMemoryTrashCollectionCalendar implements TrashCollectionCalendar, 
     }
 
     @Scheduled(cron = "${calendar.update}")
-    void update() throws IOException, InterruptedException {
+    void update() throws InterruptedException {
         try {
-            log.info("Updating calendar");
             collections = provider.fetch(LocalDate.now(clock));
             log.info("Updated calendar: {}", collections);
             cache.store(collections);

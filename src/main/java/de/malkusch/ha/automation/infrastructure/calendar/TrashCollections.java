@@ -1,12 +1,13 @@
 package de.malkusch.ha.automation.infrastructure.calendar;
 
-import static java.util.Objects.requireNonNull;
+import de.malkusch.ha.automation.model.TrashCollection;
 
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.stream.Stream;
 
-import de.malkusch.ha.automation.model.TrashCollection;
+import static java.lang.Math.abs;
+import static java.util.Objects.requireNonNull;
 
 public record TrashCollections(Collection<TrashCollection> collections) {
 
@@ -40,6 +41,7 @@ public record TrashCollections(Collection<TrashCollection> collections) {
     }
 
     public String toString() {
-        return String.format("[%s - %s, n=%d]", first().date(), last().date(), collections.size());
+        var hash = abs(hashCode() % 10000);
+        return String.format("[%s - %s, n=%d, #=%d]", first().date(), last().date(), collections.size(), hash);
     }
 }
