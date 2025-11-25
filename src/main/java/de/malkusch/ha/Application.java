@@ -1,21 +1,19 @@
 package de.malkusch.ha;
 
-import org.apache.commons.cli.CommandLine;
-import org.apache.commons.cli.DefaultParser;
-import org.apache.commons.cli.HelpFormatter;
-import org.apache.commons.cli.Option;
-import org.apache.commons.cli.Options;
-import org.apache.commons.cli.ParseException;
+import org.apache.commons.cli.*;
+import org.apache.commons.cli.help.HelpFormatter;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+
+import java.io.IOException;
 
 @SpringBootApplication
 public class Application {
 
-    private static record CliArguments(String config) {
-    };
+    private record CliArguments(String config) {
+    }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         var appBuilder = new SpringApplicationBuilder(Application.class);
 
         var arguments = parseArguments(args);
@@ -27,7 +25,7 @@ public class Application {
         app.run(args);
     }
 
-    private static CliArguments parseArguments(String[] args) {
+    private static CliArguments parseArguments(String[] args) throws IOException {
         var options = new Options();
 
         {
@@ -44,8 +42,8 @@ public class Application {
 
         } catch (ParseException e) {
             System.out.println(e.getMessage());
-            var formatter = new HelpFormatter();
-            formatter.printHelp("utility-name", options);
+            var formatter = HelpFormatter.builder().get();
+            formatter.printHelp("trashday.jar", null, options, null, true);
 
             System.exit(1);
         }
