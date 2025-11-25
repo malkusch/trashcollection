@@ -1,8 +1,13 @@
 package de.malkusch.ha.automation.infrastructure.calendar.ical4j;
 
-import static java.util.stream.Collectors.groupingBy;
-import static net.fortuna.ical4j.model.Component.VEVENT;
-import static net.fortuna.ical4j.model.Property.SUMMARY;
+import de.malkusch.ha.automation.infrastructure.calendar.CalendarProvider;
+import de.malkusch.ha.automation.infrastructure.calendar.TrashCollections;
+import de.malkusch.ha.automation.model.TrashCan;
+import de.malkusch.ha.automation.model.TrashCollection;
+import lombok.RequiredArgsConstructor;
+import net.fortuna.ical4j.model.Property;
+import net.fortuna.ical4j.model.component.VEvent;
+import net.fortuna.ical4j.model.property.DtStart;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -12,14 +17,10 @@ import java.time.temporal.TemporalAccessor;
 import java.util.List;
 import java.util.Optional;
 
-import de.malkusch.ha.automation.infrastructure.calendar.CalendarProvider;
-import de.malkusch.ha.automation.infrastructure.calendar.TrashCollections;
-import de.malkusch.ha.automation.model.TrashCan;
-import de.malkusch.ha.automation.model.TrashCollection;
-import lombok.RequiredArgsConstructor;
-import net.fortuna.ical4j.model.Property;
-import net.fortuna.ical4j.model.component.VEvent;
-import net.fortuna.ical4j.model.property.DtStart;
+import static java.util.Optional.ofNullable;
+import static java.util.stream.Collectors.groupingBy;
+import static net.fortuna.ical4j.model.Component.VEVENT;
+import static net.fortuna.ical4j.model.Property.SUMMARY;
 
 @RequiredArgsConstructor
 public final class Ical4jCalendarProvider implements CalendarProvider {
@@ -68,7 +69,7 @@ public final class Ical4jCalendarProvider implements CalendarProvider {
     }
 
     private static LocalDate collectionDate(VEvent event) {
-        var date = event.getStartDate().map(DtStart::getDate)
+        var date = ofNullable(event.getDateTimeStart()).map(DtStart::getDate)
                 .orElseThrow(() -> new IllegalStateException(event + " has no collection date"));
 
         if (date instanceof LocalDate) {
