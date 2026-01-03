@@ -2,6 +2,7 @@ package de.malkusch.ha.shared.infrastructure.telegram;
 
 import de.malkusch.ha.shared.infrastructure.http.HttpConfiguration.HttpProperties;
 import de.malkusch.telgrambot.TelegramApi;
+import de.malkusch.telgrambot.api.TelegramApiFactory;
 import de.malkusch.telgrambot.api.Timeouts;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -34,7 +35,8 @@ public class TelegramConfiguration {
 
     @Bean
     TelegramApi telegram() {
+
         var timeouts = new Timeouts(httpProperties.getTimeout(), properties.polling);
-        return telegramApi(properties.chatId, properties.token, timeouts);
+        return TelegramApiFactory.telegramApi(properties.chatId, properties.token, timeouts);
     }
 }
