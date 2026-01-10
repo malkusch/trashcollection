@@ -1,20 +1,19 @@
 package de.malkusch.ha.notification.application;
 
+import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
+import de.malkusch.ha.notification.model.Notification.CallbackNotification;
+import de.malkusch.ha.notification.model.Notification.SilentNotification;
+import de.malkusch.ha.notification.model.NotificationService;
+import de.malkusch.ha.shared.infrastructure.JsonConfiguration;
+import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
+import org.junit.jupiter.api.Test;
+
 import static de.malkusch.ha.test.CheckTrashDayServiceTests.tomorrowsTrashDayNoticed;
 import static de.malkusch.ha.test.TrashCollectionTests.trashCollection;
 import static org.mockito.ArgumentMatchers.argThat;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
-
-import org.junit.jupiter.api.Test;
-
-import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
-import de.malkusch.ha.notification.model.Notification.CallbackNotification;
-import de.malkusch.ha.notification.model.Notification.TextNotification;
-import de.malkusch.ha.notification.model.NotificationService;
-import de.malkusch.ha.shared.infrastructure.JsonConfiguration;
-import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
 
 public class TrashCollectionNotificationApplicationServiceTest {
 
@@ -27,7 +26,7 @@ public class TrashCollectionNotificationApplicationServiceTest {
         service.onChanged(new NextTrashCollectionChanged(trashCollection("2023-01-12/RO")));
 
         verify(notificationService)
-                .send(eq(new TextNotification("Die nächste Müllabfuhr kommt am Do. 12.1.23: [ORGANIC, RESIDUAL]")));
+                .send(eq(new SilentNotification("Die nächste Müllabfuhr kommt am Do. 12.1.23: [ORGANIC, RESIDUAL]")));
     }
 
     @Test

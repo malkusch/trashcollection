@@ -1,21 +1,21 @@
 package de.malkusch.ha.notification.application;
 
-import static de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter.date;
-import static de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter.trashCans;
-
-import org.springframework.context.event.EventListener;
-import org.springframework.stereotype.Service;
-
 import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayNoticed;
 import de.malkusch.ha.automation.model.CheckTrashDayService.TomorrowsTrashDayReminded;
 import de.malkusch.ha.automation.model.NextTrashCollection.NextTrashCollectionChanged;
 import de.malkusch.ha.automation.model.TrashCollection;
 import de.malkusch.ha.notification.model.Notification.CallbackNotification;
 import de.malkusch.ha.notification.model.Notification.CallbackNotification.Callback;
+import de.malkusch.ha.notification.model.Notification.SilentNotification;
 import de.malkusch.ha.notification.model.Notification.TextNotification;
 import de.malkusch.ha.notification.model.NotificationService;
 import de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.event.EventListener;
+import org.springframework.stereotype.Service;
+
+import static de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter.date;
+import static de.malkusch.ha.shared.infrastructure.TrashCollectionFormatter.trashCans;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +28,7 @@ public final class TrashCollectionNotificationApplicationService {
         var message = String.format("Die nächste Müllabfuhr kommt am %s: %s", //
                 date(event.nextCollection()), //
                 trashCans(event.nextCollection()));
-        var notification = new TextNotification(message);
+        var notification = new SilentNotification(message);
         notificationService.send(notification);
     }
 
