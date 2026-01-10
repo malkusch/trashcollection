@@ -4,7 +4,7 @@ import de.malkusch.ha.notification.model.Notification.CallbackNotification.Callb
 
 public sealed interface Notification {
 
-    public record TextNotification(String message) implements Notification {
+    record TextNotification(String message) implements Notification {
 
         @Override
         public String toString() {
@@ -12,7 +12,15 @@ public sealed interface Notification {
         }
     }
 
-    public record CallbackNotification(String message, Callback callback) implements Notification {
+    record SilentNotification(String message) implements Notification {
+
+        @Override
+        public String toString() {
+            return message;
+        }
+    }
+
+    record CallbackNotification(String message, Callback callback) implements Notification {
         public record Callback(String name, String payload) {
         }
     }

@@ -1,9 +1,8 @@
 package de.malkusch.ha.notification.application;
 
-import org.springframework.stereotype.Service;
-
-import de.malkusch.ha.notification.model.Notification.TextNotification;
+import de.malkusch.ha.notification.model.Notification.SilentNotification;
 import de.malkusch.ha.notification.model.NotificationService;
+import org.springframework.stereotype.Service;
 
 @Service
 public final class ApplicationLifeCycleNotificationApplicationService implements AutoCloseable {
@@ -12,11 +11,11 @@ public final class ApplicationLifeCycleNotificationApplicationService implements
 
     public ApplicationLifeCycleNotificationApplicationService(NotificationService notifier) {
         this.notifier = notifier;
-        notifier.send(new TextNotification("Trash application started"));
+        notifier.send(new SilentNotification("Trash application started"));
     }
 
     @Override
-    public void close() throws Exception {
-        notifier.send(new TextNotification("Trash application stopped"));
+    public void close() {
+        notifier.send(new SilentNotification("Trash application stopped"));
     }
 }
